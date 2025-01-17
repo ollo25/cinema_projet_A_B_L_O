@@ -26,8 +26,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#about">Connexion</a></li>
-                <li class="nav-item"><a class="nav-link" href="#projects">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>
+                <li class="nav-item"><a class="nav-link" href="Inscription.php">Inscription</a></li>
                 <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
             </ul>
         </div>
