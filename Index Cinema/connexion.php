@@ -26,9 +26,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-
                 <li class="nav-item"><a class="nav-link" href="Inscription.php">Inscription</a></li>
-
             </ul>
         </div>
     </div>
