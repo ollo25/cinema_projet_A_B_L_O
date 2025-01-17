@@ -37,7 +37,54 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
 
-                
+                <form>
+                    <div class="titreInscription">
+                        <h3><u>INSCRIPTION</u></h3>
+                    </div>
+
+                    <div class="input-group mb-3" style="margin-top: 10px;">
+                        <span class="input-group-text">👤</span>
+                        <div class="form-floating">
+                            <input name="nom" type="text" class="form-control rounded-email" id="floatingInputGroup1" placeholder="Username">
+                            <label for="floatingInputGroup1">Nom</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3" style="margin-top: 10px;">
+                        <span class="input-group-text">👤</span>
+                        <div class="form-floating">
+                            <input name="prenom" type="text" class="form-control" id="floatingInputGroup2" placeholder="Username" style="width: 100%;" size="30">
+                            <label for="floatingInputGroup1">Prénom</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3" style="margin-top: 10px;">
+                        <span class="input-group-text">📧</span>
+                        <div class="form-floating">
+                            <input name="email" type="text" class="form-control" id="floatingInputGroup2" placeholder="Username" style="width: 100%;" size="30">
+                            <label for="floatingInputGroup1">E-mail</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3" style="margin-top: 10px;">
+                        <span class="input-group-text">🔒</span>
+                        <div class="form-floating">
+                            <input name="mdp" type="password" class="form-control" id="floatingInputGroup2" placeholder="Username" style="width: 100%;" size="30">
+                            <label for="floatingInputGroup1">Mot de passe</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3" style="margin-top: 10px;">
+                        <span class="input-group-text">🔒</span>
+                        <div class="form-floating">
+                            <input name="mdpC" type="password" class="form-control" id="floatingInputGroup2" placeholder="Username" style="width: 100%;" size="30">
+                            <label for="floatingInputGroup1">Confirmation mot de passe</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" style="margin-top: 10px;"" type="submit">S'Inscrire</button>
+                    </div>
+                </form>
+
+
 
             </div>
         </div>

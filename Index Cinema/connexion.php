@@ -32,52 +32,47 @@
         </div>
     </div>
 </nav>
-<!-- Masthead-->
+<!-- Masthead -->
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <form action="" method="action">
-                <h3>Connexion</h3>
-                <div class="input-group mb-3" style="margin-top: 10px;">
-                    <span class="input-group-text">📧</span>
-                    <div class="form-floating">
-                        <input type="text" class="form-control rounded-email" id="floatingInputGroup1" name="emailCo" placeholder="Username">
-                        <label for="floatingInputGroup1">Email</label>
+                <h3><u><strong>CONNEXION</strong></u></h3>
+                <form action="" method="post">
+                    <div class="input-group mb-3" style="margin-top: 10px;">
+                        <span class="input-group-text">📧</span>
+                        <div class="form-floating">
+                            <input type="text" class="form-control rounded-email" id="floatingInputGroup1" name="emailCo" placeholder="Email">
+                            <label for="floatingInputGroup1">Email</label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="input-group mb-3" style="margin-top: 10px;">
-                    <span class="input-group-text">🔒</span>
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInputGroup2" name="mdpCo" placeholder="Username" style="width: 100%;" size="30">
-                        <label for="floatingInputGroup1">Mot de passe</label>
+                    <div class="input-group mb-3" style="margin-top: 10px;">
+                        <span class="input-group-text">🔒</span>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingInputGroup2" name="mdpCo" placeholder="Mot de passe">
+                            <label for="floatingInputGroup2">Mot de passe</label>
+                        </div>
                     </div>
                     <div class="col-12">
-                        <button class="btn btn-primary" style="margin-top: 10px" type="submit">S'Inscrire</button>
+                        <button class="btn btn-primary" style="margin-top: 10px;" type="submit">Se connecter</button>
                     </div>
-
-
+                </form>
+                <div class="lienInscription" style="margin-top: 10px;">
+                    Nouveau? Je souhaite <a href="PageInscription.html" class="header-button">m'inscrire</a> !
+                </div>
             </div>
         </div>
     </div>
 </header>
-<!-- About-->
-<!-- Projects-->
-<!-- Signup-->
 
-<!-- Contact-->
-<!-- Footer-->
-<footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your CINEMAX 2025</div></footer>
-<!-- Bootstrap core JS-->
+<!-- Footer -->
+<footer class="footer bg-black small text-center text-white-50">
+    <div class="container px-4 px-lg-5">Copyright &copy; Your CINEMAX 2025</div>
+</footer>
+
+<!-- Bootstrap core JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
+<!-- Core theme JS -->
 <script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- SB Forms JS -->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-</body>
-</html>
-
