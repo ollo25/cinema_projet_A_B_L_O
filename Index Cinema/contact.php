@@ -37,25 +37,24 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <form action="" method="action">
-                <h3>Connexion</h3>
+
+                <h3>Contact</h3>
                 <div class="input-group mb-3" style="margin-top: 10px;">
                     <span class="input-group-text">📧</span>
                     <div class="form-floating">
-                        <input type="text" class="form-control rounded-email" id="floatingInputGroup1" name="emailCo" placeholder="Username">
-                        <label for="floatingInputGroup1">Email</label>
+                        <input type="text" class="form-control rounded-email" id="objet" placeholder="Username">
+                        <label for="objet">Objet</label>
                     </div>
                 </div>
 
                 <div class="input-group mb-3" style="margin-top: 10px;">
-                    <span class="input-group-text">🔒</span>
+                    <span class="input-group-text">💬</span>
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInputGroup2" name="mdpCo" placeholder="Username" style="width: 100%;" size="30">
-                        <label for="floatingInputGroup1">Mot de passe</label>
+                        <textarea class="form-control" id="description" placeholder="Username" style="width: 100%" cols="150" rows="5"></textarea>
+                        <label for="description">Description</label>
                     </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary" style="margin-top: 10px" type="submit">S'Inscrire</button>
-                    </div>
+                </div>
+
 
 
             </div>
@@ -79,5 +78,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
-</html>
-
