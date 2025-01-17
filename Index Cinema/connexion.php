@@ -7,6 +7,7 @@
     <meta name="author" content="" />
     <title>Grayscale - Start Bootstrap Theme</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -37,7 +38,23 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
 
-                dfhfgh
+                <h3>Connexion</h3>
+                <div class="input-group mb-3" style="margin-top: 10px;">
+                    <span class="input-group-text">📧</span>
+                    <div class="form-floating">
+                        <input type="text" class="form-control rounded-email" id="floatingInputGroup1" placeholder="Username">
+                        <label for="floatingInputGroup1">Email</label>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3" style="margin-top: 10px;">
+                    <span class="input-group-text">🔒</span>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInputGroup2" placeholder="Username" style="width: 100%;" size="30">
+                        <label for="floatingInputGroup1">Mot de passe</label>
+                    </div>
+                </div>
+
 
             </div>
         </div>
