@@ -37,7 +37,7 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
 
-                <form>
+                <form action="gestionInscription.php" method="post">
                     <div class="titreInscription">
                         <h3><u>INSCRIPTION</u></h3>
                     </div>
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <button class="btn btn-primary" style="margin-top: 10px;"" type="submit">S'Inscrire</button>
+                        <button class="btn btn-primary" type="submit" style="margin-top: 10px;"" type="submit">S'Inscrire</button>
                     </div>
                 </form>
 
