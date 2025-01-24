@@ -17,6 +17,7 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body id="page-top">
+
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -38,7 +39,7 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
                 <h3><u><strong>CONNEXION</strong></u></h3>
-                <form action="" method="post">
+                <form action="gestionConnexion.php" method="post">
                     <div class="input-group mb-3" style="margin-top: 10px;">
                         <span class="input-group-text">📧</span>
                         <div class="form-floating">
@@ -53,6 +54,19 @@
                             <label for="floatingInputGroup2">Mot de passe</label>
                         </div>
                     </div>
+                    <?php
+                    session_start();
+
+                    if (isset($_SESSION['infoIncorrect']) && $_SESSION['infoIncorrect'] === true) {
+                        echo "Email ou mot de passe incorrect";
+                        unset($_SESSION['infoIncorrect']);
+                    }
+
+                    if (isset($_SESSION['infoManquante']) && $_SESSION['infoManquante'] === true) {
+                        echo "Champs vide(s)";
+                        unset($_SESSION['infoManquante']);
+                    }
+                    ?>
                     <div class="col-12">
                         <button class="btn btn-primary" style="margin-top: 10px;" type="submit">Se connecter</button>
                     </div>
