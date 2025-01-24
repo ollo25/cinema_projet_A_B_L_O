@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Cinemax - Connexion </title>
+    <title>Cinemax - ADMIN</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Font Awesome icons (free version)-->
@@ -71,9 +71,6 @@
                         <button class="btn btn-primary" style="margin-top: 10px;" type="submit">Se connecter</button>
                     </div>
                 </form>
-                <div class="lienInscription" style="margin-top: 10px;">
-                    Nouveau? Je souhaite <a href="Inscription.php" class="header-button">m'inscrire</a> !
-                </div>
             </div>
         </div>
     </div>
