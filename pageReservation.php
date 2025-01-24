@@ -1,1 +1,2 @@
-salut
+<?php
+echo 'page reservation';
