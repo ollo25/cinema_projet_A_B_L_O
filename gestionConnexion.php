@@ -19,7 +19,7 @@ $utilisateur = $req->fetch();
 if ($utilisateur) {
     $_SESSION["email"] = $utilisateur["email"];
     $_SESSION["mdp"] = $utilisateur["mdp"];
-    $_SESSION["role"] = "admin";
+    $_SESSION["role"] = "user";
     $_SESSION["nom"] = $utilisateur["nom"];
     $_SESSION["prenom"] = $utilisateur["prenom"];
     $_SESSION["connexion"] = true;
