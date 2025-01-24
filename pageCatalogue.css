@@ -1,0 +1,9 @@
+.card-spacing {
+    margin-bottom: 15px;
+}
+.btn-toolbar {
+    display: flex;
+    justify-content: center;
+}
+
+
