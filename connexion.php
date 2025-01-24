@@ -72,7 +72,7 @@
                     </div>
                 </form>
                 <div class="lienInscription" style="margin-top: 10px;">
-                    Nouveau? Je souhaite <a href="PageInscription.html" class="header-button">m'inscrire</a> !
+                    Nouveau? Je souhaite <a href="Inscription.php" class="header-button">m'inscrire</a> !
                 </div>
             </div>
         </div>
