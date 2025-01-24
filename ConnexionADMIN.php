@@ -39,7 +39,7 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
                 <h3><u><strong>CONNEXION</strong></u></h3>
-                <form action="gestionConnexion.php" method="post">
+                <form action="gestionConnexionADMIN.php" method="post">
                     <div class="input-group mb-3" style="margin-top: 10px;">
                         <span class="input-group-text">📧</span>
                         <div class="form-floating">
