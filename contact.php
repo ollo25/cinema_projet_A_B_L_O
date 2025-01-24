@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -25,24 +25,19 @@
             Menu
             <i class="fas fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="Inscription.php">Inscription</a></li>
-            </ul>
-        </div>
     </div>
 </nav>
 <!-- Masthead-->
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
+            <form action="gestionContact.php" method="post">
             <div class="text-center">
-
                 <h3>Contact</h3>
                 <div class="input-group mb-3" style="margin-top: 10px;">
                     <span class="input-group-text">📧</span>
                     <div class="form-floating">
-                        <input type="text" class="form-control rounded-email" id="objet" placeholder="Username">
+                        <input name="objet" type="text" class="form-control rounded-email" id="objet" placeholder="Objet">
                         <label for="objet">Objet</label>
                     </div>
                 </div>
@@ -50,14 +45,15 @@
                 <div class="input-group mb-3" style="margin-top: 10px;">
                     <span class="input-group-text">💬</span>
                     <div class="form-floating">
-                        <textarea class="form-control" id="description" placeholder="Username" style="width: 100%" cols="150" rows="5"></textarea>
+                        <textarea name="description" class="form-control" id="description" placeholder="Username" style="width: 100%" cols="150" rows="5"></textarea>
                         <label for="description">Description</label>
                     </div>
                 </div>
-
-
-
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit" style="margin-top: 10px;"" type="submit">Soumettre</button>
+                </div>
             </div>
+            </form>
         </div>
     </div>
 </header>
