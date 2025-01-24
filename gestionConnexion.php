@@ -22,7 +22,7 @@ if ($utilisateur["role"] == "admin"){
     $_SESSION["nom"] = $utilisateur["nom"];
     $_SESSION["prenom"] = $utilisateur["prenom"];
     $_SESSION["connexion"] = true;
-    header('Location: pageADMIN.php');
+    header('Location: indexADMIN.php');
 } elseif ($utilisateur ) {
     $_SESSION["email"] = $utilisateur["email"];
     $_SESSION["mdp"] = $utilisateur["mdp"];
