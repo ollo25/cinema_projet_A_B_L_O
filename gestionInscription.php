@@ -1,11 +1,11 @@
 <?php
 if($_POST["mdp"]==$_POST["mdpC"]) {
     if (
-        empty($_POST["email"]) &&
-        empty($_POST["nom"]) &&
-        empty($_POST["prenom"]) &&
-        empty($_POST["mdp"]) &&
-        empty($_POST["mdpC"])) {
+        isset($_POST["email"]) &&
+        isset($_POST["nom"]) &&
+        isset($_POST["prenom"]) &&
+        isset($_POST["mdp"]) &&
+        isset($_POST["mdpC"])) {
         $bdd = new PDO("mysql:host=localhost;dbname=lom_gestion_cinema;charset=UTF8", "root", "");
         $req = $bdd->prepare("INSERT INTO user(nom,prenom,email,mdp,role) values(:nom,:prenom,:email,:mdp,:role) ");
         $req->execute(array(
@@ -26,13 +26,13 @@ if($_POST["mdp"]==$_POST["mdpC"]) {
 
         header("Location: index.html?connected=true");
     } else {
-        echo("Les mots de passes ne correspondent pas");
+        echo("Champs non rempli(s)");
     }
 
 }
 
 else{
-    echo "les données sont incompletes ";
+    echo "Les mots de passes de ne sont pas identiques";
     echo "<form action='Inscription.php' method='get'>
           <button type='submit'> retour page inscription</button>
           </form>";
