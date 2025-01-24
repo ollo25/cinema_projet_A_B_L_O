@@ -4,7 +4,7 @@ session_start();
 if (empty($_POST['emailCo']) || empty($_POST['mdpCo'])) {
     $_SESSION["connexion"] = false;
     $_SESSION["infoManquante"] = true;
-    header("Location: connexion.php");
+    header("Location: ConnexionADMIN.php?veuillez-remplir-tous-les-champs");
     exit();
 }
 
@@ -23,10 +23,10 @@ if ($utilisateur) {
     $_SESSION["nom"] = $utilisateur["nom"];
     $_SESSION["prenom"] = $utilisateur["prenom"];
     $_SESSION["connexion"] = true;
-    header('Location: pageReservation.php');
+    header('Location: pageADMIN.php');
 } else {
     $_SESSION["connexion"] = false;
     $_SESSION["infoIncorrect"] = true;
-    header("Location: connexion.php");
+    header("Location: ConnexionADMIN.php?donnees-incorrects");
 }
 ?>

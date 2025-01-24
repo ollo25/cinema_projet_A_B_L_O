@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if (empty($_POST['emailCo']) || empty($_POST['mdpCo'])) {
     $_SESSION["connexion"] = false;
     $_SESSION["infoManquante"] = true;
@@ -16,7 +15,15 @@ $req->execute(array(
 ));
 $utilisateur = $req->fetch();
 
-if ($utilisateur) {
+if ($utilisateur["role"] == "admin"){
+    $_SESSION["email"] = $utilisateur["email"];
+    $_SESSION["mdp"] = $utilisateur["mdp"];
+    $_SESSION["role"] = "user";
+    $_SESSION["nom"] = $utilisateur["nom"];
+    $_SESSION["prenom"] = $utilisateur["prenom"];
+    $_SESSION["connexion"] = true;
+    header('Location: pageADMIN.php');
+} elseif ($utilisateur ) {
     $_SESSION["email"] = $utilisateur["email"];
     $_SESSION["mdp"] = $utilisateur["mdp"];
     $_SESSION["role"] = "user";
