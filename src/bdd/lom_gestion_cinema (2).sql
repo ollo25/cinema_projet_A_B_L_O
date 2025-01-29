@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 24 jan. 2025 à 07:21
+-- Généré le : mer. 29 jan. 2025 à 09:38
 -- Version du serveur : 5.7.36
 -- Version de PHP : 8.1.0
 
@@ -47,7 +47,7 @@ CREATE TABLE `film` (
   `duree` time DEFAULT NULL,
   `genre` varchar(50) DEFAULT NULL,
   `affiche` varchar(200) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `reservation` (
   `id_film` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `nb_places` int(100) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -71,7 +71,7 @@ CREATE TABLE `reservation` (
 CREATE TABLE `salle` (
   `id_salle` int(11) NOT NULL,
   `nb_place` int(100) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -86,7 +86,7 @@ CREATE TABLE `seance` (
   `heure` time DEFAULT NULL,
   `id_salle` int(11) DEFAULT NULL,
   `place_dispo` int(100) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -96,12 +96,19 @@ CREATE TABLE `seance` (
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
-  `nom` varchar(100) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `mdp` varchar(50) DEFAULT NULL,
-  `role` text
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `nom` varchar(100) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `mdp` varchar(50) NOT NULL,
+  `role` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id_user`, `nom`, `prenom`, `email`, `mdp`, `role`) VALUES
+(1, 'OMNES', 'Léo', 'l.omnes@lprs.fr', '1', 'user');
 
 --
 -- Index pour les tables déchargées
@@ -185,7 +192,7 @@ ALTER TABLE `seance`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

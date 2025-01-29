@@ -10,7 +10,7 @@ class UserRepository
     }
     public function connexion(User $user){
 
-        $bdd = new PDO('mysql:host=localhost;dbname=lom_gestion_cinema;charset=utf8', 'root', '');
+
         $req = $bdd->prepare('SELECT * FROM user WHERE email = :email AND mdp = :mdp');
         $req->execute(array(
             'email' => $user->getEmail(),
@@ -22,6 +22,7 @@ class UserRepository
         }
         return $user;
     }
+    public function inscription(User $user){
 
-
+    }
 }
