@@ -6,21 +6,24 @@ if (empty($_POST['emailCo']) || empty($_POST['mdpCo'])) {
     header("Location: connexion.php");
     exit();
 }
+$user = new User([
+    'email' => $_POST["emailCo"],
+    'mdp' => $_POST["mdpCo"]
+]);
+$userRepository = new UserRepository();
+$user = $userRepository->connexion($user);
+if(!empty($user->getIdUser())){
+    $_SESSION["user"] = $user;
+    if($user->getRole() == "admin"){
+        header("Location: connexionAdmin.php");
+    }else{
+        header("Location: connexion.php");
+    }
+}else{
+    header("Location: connexion.php");
+}
 
-$bdd = new PDO('mysql:host=localhost;dbname=lom_gestion_cinema;charset=utf8', 'root', '');
-$req = $bdd->prepare('SELECT * FROM user WHERE email = :email AND mdp = :mdp');
-$req->execute(array(
-    'email' => $_POST['emailCo'],
-    'mdp' => $_POST['mdpCo']
-));
-$utilisateur = $req->fetch();
-
-if ($utilisateur["role"] == "admin"){
-    $_SESSION["email"] = $utilisateur["email"];
-    $_SESSION["mdp"] = $utilisateur["mdp"];
-    $_SESSION["role"] = "user";
-    $_SESSION["nom"] = $utilisateur["nom"];
-    $_SESSION["prenom"] = $utilisateur["prenom"];
+if ($user->getRole() == "admin"){
     $_SESSION["connexion"] = true;
     header('Location: indexADMIN.php');
 } elseif ($utilisateur ) {

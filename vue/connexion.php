@@ -6,7 +6,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Cinemax - Connexion </title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -28,7 +28,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="Inscription.php">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Inscription.php">Inscription</a></li>
             </ul>
         </div>
     </div>
@@ -39,7 +39,7 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
                 <h3><u><strong>CONNEXION</strong></u></h3>
-                <form action="gestionConnexion.php" method="post">
+                <form action="../src/traitement/gestionConnexion.php" method="post">
                     <div class="input-group mb-3" style="margin-top: 10px;">
                         <span class="input-group-text">📧</span>
                         <div class="form-floating">
@@ -72,7 +72,7 @@
                     </div>
                 </form>
                 <div class="lienInscription" style="margin-top: 10px;">
-                    Nouveau? Je souhaite <a href="Inscription.php" class="header-button">m'inscrire</a> !
+                    Nouveau? Je souhaite <a href="../Inscription.php" class="header-button">m'inscrire</a> !
                 </div>
             </div>
         </div>
