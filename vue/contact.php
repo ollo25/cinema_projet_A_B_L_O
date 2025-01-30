@@ -1,55 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>CINEMAX</title>
+    <title>Grayscale - Start Bootstrap Theme</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../assets/css/styles.css" rel="stylesheet" />
 </head>
 <body id="page-top">
-<script>
-    // Vérifier si l'URL contient le paramètre "connected=true"
-    const urlParams = new URLSearchParams(window.location.search);
-    const isConnected = urlParams.get('connected') === 'true';
-
-    if (isConnected) {
-        // Afficher le popup
-        const popupHtml = `
-            <div class="overlay" id="overlay"></div>
-            <div class="popup" id="popup">
-                <h2>Vous êtes connecté !</h2>
-                <button id="closePopup">Fermer</button>
-            </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', popupHtml);
-
-        const popup = document.getElementById("popup");
-        const overlay = document.getElementById("overlay");
-        const closePopup = document.getElementById("closePopup");
-
-        // Afficher le popup et l'overlay
-        popup.style.display = "block";
-        overlay.style.display = "block";
-
-        // Fermer le popup en cliquant sur le bouton
-        closePopup.addEventListener("click", () => {
-            popup.style.display = "none";
-            overlay.style.display = "none";
-        });
-    }
-</script>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="index.html">CINEMAX - Accueil </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -60,25 +31,39 @@
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
+            <form action="../src/traitement/gestionContact.php" method="post">
             <div class="text-center">
-                <h1>CINEMAX ADMIN post</h1>
-                <br>
-                <br>
-                <a class="btn btn-primary" href="pageReservation.php">Gestion Utilisateurs</a>
-                <br>
-                <br>
-                <a class="btn btn-primary" href="">Gestion Films</a>
-                <br>
+                <h3>Contact</h3>
+                <div class="input-group mb-3" style="margin-top: 10px;">
+                    <span class="input-group-text">📧</span>
+                    <div class="form-floating">
+                        <input name="objet" type="text" class="form-control rounded-email" id="objet" placeholder="Objet">
+                        <label for="objet">Objet</label>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3" style="margin-top: 10px;">
+                    <span class="input-group-text">💬</span>
+                    <div class="form-floating">
+                        <textarea name="description" class="form-control" id="description" placeholder="Username" style="width: 100%" cols="150" rows="5"></textarea>
+                        <label for="description">Description</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit" style="margin-top: 10px;"" type="submit">Soumettre</button>
+                </div>
             </div>
+            </form>
         </div>
     </div>
 </header>
 <!-- About-->
 <!-- Projects-->
 <!-- Signup-->
+
 <!-- Contact-->
 <!-- Footer-->
-<footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
+<footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your CINEMAX 2025</div></footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
@@ -89,4 +74,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
-</html>

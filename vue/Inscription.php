@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../assets/css/styles.css" rel="stylesheet" />
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -26,7 +26,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="vue/connexion.php">Connexion</a></li>
+                <li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>
             </ul>
         </div>
     </div>
@@ -37,7 +37,7 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
 
-                <form action="gestionInscription.php" method="post">
+                <form action="../src/traitement/gestionInscription.php" method="post">
                     <div class="titreInscription">
                         <h3><u>INSCRIPTION</u></h3>
                     </div>

@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../assets/css/styles.css" rel="stylesheet" />
 </head>
 <body id="page-top">
 
@@ -28,7 +28,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="../Inscription.php">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link" href="Inscription.php">Inscription</a></li>
             </ul>
         </div>
     </div>
@@ -72,7 +72,7 @@
                     </div>
                 </form>
                 <div class="lienInscription" style="margin-top: 10px;">
-                    Nouveau? Je souhaite <a href="../Inscription.php" class="header-button">m'inscrire</a> !
+                    Nouveau? Je souhaite <a href="Inscription.php" class="header-button">m'inscrire</a> !
                 </div>
             </div>
         </div>

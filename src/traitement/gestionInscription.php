@@ -1,4 +1,6 @@
 <?php
+require_once"../modele/User.php";
+require_once"../repository/UserRepository.php";
 if($_POST["mdp"]==$_POST["mdpC"]) {
     if (
         isset($_POST["email"]) &&
@@ -6,15 +8,14 @@ if($_POST["mdp"]==$_POST["mdpC"]) {
         isset($_POST["prenom"]) &&
         isset($_POST["mdp"]) &&
         isset($_POST["mdpC"])) {
-        $bdd = new PDO("mysql:host=localhost;dbname=lom_gestion_cinema;charset=UTF8", "root", "");
-        $req = $bdd->prepare("INSERT INTO user(nom,prenom,email,mdp,role) values(:nom,:prenom,:email,:mdp,:role) ");
-        $req->execute(array(
+        $user = new User([
+            "email" => $_POST["email"],
             "nom" => $_POST["nom"],
             "prenom" => $_POST["prenom"],
-            "email" => $_POST["email"],
-            "mdp" => $_POST["mdp"],
-            "role"=>"user"
-        ));
+            "mdp" => $_POST["mdp"]
+        ]);
+        $userRepository = new UserRepository();
+        $user = $userRepository->inscription($user);
 
         session_start();
         $_SESSION["email"] = $_POST["email"];
@@ -24,7 +25,7 @@ if($_POST["mdp"]==$_POST["mdpC"]) {
         $_SESSION["prenom"] = $_POST["prenom"];
         $_SESSION["connexion"] = true;
 
-        header("Location: index.html?connected=true");
+        header("Location: ../../index.php?connected=true");
     } else {
         echo("Champs non rempli(s)");
     }
@@ -33,7 +34,7 @@ if($_POST["mdp"]==$_POST["mdpC"]) {
 
 else{
     echo "Les mots de passes de ne sont pas identiques";
-    echo "<form action='Inscription.php' method='get'>
+    echo "<form action='../../vue/Inscription.php' method='get'>
           <button type='submit'> retour page inscription</button>
           </form>";
 

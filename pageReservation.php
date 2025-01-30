@@ -58,7 +58,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="vue/connexion.php">Connexion</a></li>
                 <li class="nav-item"><a class="nav-link" href="inscription.php">Inscription</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="vue/contact.php">Contact</a></li>
             </ul>
         </div>
     </div>
