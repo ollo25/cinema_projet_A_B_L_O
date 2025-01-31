@@ -12,9 +12,10 @@ class UserRepository{
         $utilisateur = $req->fetch();
         if($utilisateur){
             // -----------------PROBLEME DEMANDER PROF ---------------
-            $user->setNom($user);
-            $user->setRole($user);
-            $user->setIdUser($user);
+            $user->setNom($utilisateur["nom"]);
+            $user->setRole($utilisateur["role"]);
+            $user->setIdUser($utilisateur["id_user"]);
+            $user->setPrenom($utilisateur["prenom"]);
             // -----------------------------------------------------------
         }
         return $user;
