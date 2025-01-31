@@ -71,7 +71,7 @@
                 <h1>CINEMAX</h1>
                 <br>
                 <br>
-                <a class="btn btn-primary" href="pageReservation.php    ">Reservation</a>
+                <a class="btn btn-primary" href="vue/pageCatalogue.php">Reservation</a>
             </div>
         </div>
     </div>
