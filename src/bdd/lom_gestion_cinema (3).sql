@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 29 jan. 2025 à 09:38
+-- Généré le : ven. 31 jan. 2025 à 08:28
 -- Version du serveur : 5.7.36
 -- Version de PHP : 8.1.0
 
@@ -44,10 +44,22 @@ CREATE TABLE `film` (
   `id_film` int(11) NOT NULL,
   `titre` varchar(100) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
-  `duree` time DEFAULT NULL,
+  `duree` int(11) DEFAULT NULL,
   `genre` varchar(50) DEFAULT NULL,
   `affiche` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `film`
+--
+
+INSERT INTO `film` (`id_film`, `titre`, `description`, `duree`, `genre`, `affiche`) VALUES
+(1, 'Interstellar', 'Dans un futur proche où la Terre se meurt, un groupe d’explorateurs utilise un trou de ver récemment découvert pour tenter de trouver une nouvelle planète habitable et sauver l’humanité.', 169, 'Science-fiction, Drame, Aventure', 'https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg'),
+(2, 'Interstellar', 'Dans un futur proche où la Terre se meurt, un groupe d’explorateurs utilise un trou de ver récemment découvert pour tenter de trouver une nouvelle planète habitable et sauver l’humanité.', 169, 'Science-fiction, Drame, Aventure', 'https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg'),
+(3, 'Inception', 'Dom Cobb est un voleur hors pair, spécialisé dans l’extraction de secrets en pénétrant les rêves de ses cibles. Mais sa nouvelle mission est plus périlleuse : il doit implanter une idée dans l’esprit d’un individu sans qu’il s’en rende compte.', 148, 'Science-fiction, Action, Thriller', 'https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg'),
+(4, 'Inception', 'Dom Cobb est un voleur hors pair, spécialisé dans l’extraction de secrets en pénétrant les rêves de ses cibles. Mais sa nouvelle mission est plus périlleuse : il doit implanter une idée dans l’esprit d’un individu sans qu’il s’en rende compte.', 148, 'Science-fiction, Action, Thriller', 'https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg'),
+(5, 'The Dark Knight', 'Batman, avec l’aide du lieutenant Gordon et du procureur Harvey Dent, tente d’éradiquer le crime organisé à Gotham. Mais leur plan est bouleversé par l’arrivée du Joker, un criminel anarchique qui sème le chaos dans la ville.\r\n\r\n', 152, 'Action, Thriller, Crime', 'https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg'),
+(6, 'The Dark Knight', 'Batman, avec l’aide du lieutenant Gordon et du procureur Harvey Dent, tente d’éradiquer le crime organisé à Gotham. Mais leur plan est bouleversé par l’arrivée du Joker, un criminel anarchique qui sème le chaos dans la ville.\r\n\r\n', 152, 'Action, Thriller, Crime', 'https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg');
 
 -- --------------------------------------------------------
 
@@ -168,7 +180,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT pour la table `film`
 --
 ALTER TABLE `film`
-  MODIFY `id_film` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `reservation`

@@ -15,7 +15,6 @@ if (empty($_POST['emailCo']) || empty($_POST['mdpCo'])) {
     ]);
     $userRepository = new UserRepository();
     $user = $userRepository->connexion($user);
-    // ---------------PROBLEME DEMANDER AU PROF-------------------------
     var_dump($user);
     if(!empty($user->getIdUser())){
 
@@ -24,7 +23,6 @@ if (empty($_POST['emailCo']) || empty($_POST['mdpCo'])) {
         }else{
             echo "flop";
         }
-        // ----------------------------------------------------------
     }else{
         $_SESSION["connexion"] = false;
         $_SESSION["infoIncorrect"] = true;
