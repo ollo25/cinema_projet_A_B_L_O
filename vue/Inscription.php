@@ -16,6 +16,20 @@
     <link href="../assets/css/styles.css" rel="stylesheet" />
 </head>
 <body id="page-top">
+<?php
+require_once 'PopUp.php';
+if(isset($_GET['erreur'])){
+    if($_GET['erreur']=="mdp"){
+        $pop = new PopUp();
+        $pop->showPopup("Les mots de passes ne correspondent pas");
+    }
+    if($_GET['erreur']=="champsVides"){
+        $pop = new PopUp();
+        $pop->showPopup("Veuillez remplir tout les champs");
+    }
+}
+
+?>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">

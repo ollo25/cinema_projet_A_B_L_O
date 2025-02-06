@@ -16,37 +16,7 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body id="page-top">
-<script>
-    // Vérifier si l'URL contient le paramètre "connected=true"
-    const urlParams = new URLSearchParams(window.location.search);
-    const isConnected = urlParams.get('connected') === 'true';
 
-    if (isConnected) {
-        // Afficher le popup
-        const popupHtml = `
-            <div class="overlay" id="overlay"></div>
-            <div class="popup" id="popup">
-                <h2>Vous êtes connecté !</h2>
-                <button id="closePopup">Fermer</button>
-            </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', popupHtml);
-
-        const popup = document.getElementById("popup");
-        const overlay = document.getElementById("overlay");
-        const closePopup = document.getElementById("closePopup");
-
-        // Afficher le popup et l'overlay
-        popup.style.display = "block";
-        overlay.style.display = "block";
-
-        // Fermer le popup en cliquant sur le bouton
-        closePopup.addEventListener("click", () => {
-            popup.style.display = "none";
-            overlay.style.display = "none";
-        });
-    }
-</script>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">

@@ -17,6 +17,20 @@
     <link href="../assets/css/styles.css" rel="stylesheet" />
 </head>
 <body id="page-top">
+<?php
+require_once 'PopUp.php';
+if(isset($_GET['erreur'])){
+    if($_GET['erreur']=="InfoManquante"){
+        $pop = new PopUp();
+        $pop->showPopup("Les informations fournies sont incomplètes");
+    }
+    if($_GET['erreur']=="inconnu"){
+        $pop = new PopUp();
+        $pop->showPopup("Erreur");
+    }
+}
+
+?>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -50,7 +64,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-primary" type="submit" style="margin-top: 10px;"" type="submit">Soumettre</button>
+                    <button class="btn btn-primary" type="submit" style="margin-top: 10px;">Soumettre</button>
                 </div>
             </div>
             </form>

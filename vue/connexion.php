@@ -17,11 +17,24 @@
     <link href="../assets/css/styles.css" rel="stylesheet" />
 </head>
 <body id="page-top">
+<?php
+require_once 'PopUp.php';
+if(isset($_GET['erreur'])){
+    if($_GET['erreur']=="infoManquante"){
+        $pop = new PopUp();
+        $pop->showPopup("Les informations fournies sont incomplètes");
+    }
+    if($_GET['erreur']=="inconnu"){
+        $pop = new PopUp();
+        $pop->showPopup("Erreur");
+    }
+}
 
+?>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="../index.html">CINEMAX - Accueil </a>
+        <a class="navbar-brand" href="../index.php?erreur=1">CINEMAX - Accueil </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -55,16 +68,11 @@
                         </div>
                     </div>
                     <?php
-                    session_start();
-
-                    if (isset($_SESSION['infoIncorrect']) && $_SESSION['infoIncorrect'] === true) {
-                        echo "Email ou mot de passe incorrect";
-                        unset($_SESSION['infoIncorrect']);
+                    if(isset($_GET['connected']) && $_GET['erreur']=="infoManquante"){
+                        echo "veuillez renseignez toutes vos informations";
                     }
-
-                    if (isset($_SESSION['infoManquante']) && $_SESSION['infoManquante'] === true) {
-                        echo "Champs vide(s)";
-                        unset($_SESSION['infoManquante']);
+                    if(isset($_GET['erreur']) && $_GET['erreur']=="emailmdpInvalide"){
+                        echo "email ou mot de passe incorrect";
                     }
                     ?>
                     <div class="col-12">
@@ -72,7 +80,7 @@
                     </div>
                 </form>
                 <div class="lienInscription" style="margin-top: 10px;">
-                    Nouveau? Je souhaite <a href="Inscription.php" class="header-button">m'inscrire</a> !
+                    Nouveau? Je souhaite <a href="Inscription.php" class="header-button">M'inscrire</a> !
                 </div>
             </div>
         </div>
