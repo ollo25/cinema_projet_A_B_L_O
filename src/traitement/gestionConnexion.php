@@ -18,7 +18,7 @@ if (empty($_POST['emailCo']) || empty($_POST['mdpCo'])) {
     if(!empty($user->getIdUser())){
 
         if($user->getRole() == "admin"){
-            header("Location: ../../connexionAdmin.php");
+            header("Location: ../../vue/indexADMIN.php");
         }else{
             header("../../vue/pageReservation.php");
         }
