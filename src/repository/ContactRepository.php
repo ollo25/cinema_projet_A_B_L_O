@@ -1,5 +1,5 @@
 <?php
-require_once "../bdd/Bdd.php";
+
 class ContactRepository {
         public function envoyerMsg(Contact $contact) {
             $bdd=new Bdd();

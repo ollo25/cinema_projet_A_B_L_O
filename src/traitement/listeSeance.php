@@ -1,10 +1,5 @@
-<?php
-require_once "../src/bdd/Bdd.php";
-require_once "../src/modele/User.php";
-require_once "../src/repository/UserRepository.php";
-$user=new UserRepository();
-$listeUser=$user->listeUser();
-?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +8,14 @@ $listeUser=$user->listeUser();
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>CINEMAX</title>
-
-
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/assets/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body id="page-top">
 
@@ -42,17 +43,14 @@ $listeUser=$user->listeUser();
                         <td>email</td>
                         <td>role</td>
                     </tr>
-
-                    <?php
-                    /** @var User $listeUsers */
-                    foreach ($listeUser as $listeUsers): ?>
-                    <tr>
-                        <td><?= ($listeUsers->getIdUser()) ?></td>
-                        <td><?= ($listeUsers->getNom()) ?></td>
-                        <td><?= ($listeUsers->getPrenom()) ?></td>
-                        <td><?= ($listeUsers->getEmail()) ?></td>
-                        <td><?= ($listeUsers->getRole()) ?></td>
-                    </tr>
+                    <?php foreach ($user as $users): ?>
+                        <tr>
+                            <td><?= ($users['id_user']) ?></td>
+                            <td><?= ($users['nom']) ?></td>
+                            <td><?= ($users['prenom']) ?></td>
+                            <td><?= ($users['email']) ?></td>
+                            <td><?= ($users['role']) ?></td>
+                        </tr>
                     <?php endforeach; ?>
                 </table>
                 <br>
