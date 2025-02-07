@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/assets/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body id="page-top">
 
@@ -37,7 +36,7 @@
                 <a class="btn btn-primary" href="listeUsers.php">Gestion Utilisateurs</a>
                 <br>
                 <br>
-                <a class="btn btn-primary" href="modifFilm.php">Gestion Films</a>
+                <a class="btn btn-primary" href="filmsGestion.php">Gestion Films</a>
                 <br>
             </div>
         </div>
