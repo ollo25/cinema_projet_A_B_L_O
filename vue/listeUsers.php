@@ -1,5 +1,10 @@
-
-
+<?php
+require_once "../src/bdd/Bdd.php";
+require_once "../src/modele/User.php";
+require_once "../src/repository/UserRepository.php";
+$user=new UserRepository();
+$listeUser=$user->listeUser();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,13 +48,16 @@
                         <td>email</td>
                         <td>role</td>
                     </tr>
-                    <?php foreach ($user as $users): ?>
+
+                    <?php
+                    /** @var User $listeUsers */
+                    foreach ($listeUser as $listeUsers): ?>
                     <tr>
-                        <td><?= ($users['id_user']) ?></td>
-                        <td><?= ($users['nom']) ?></td>
-                        <td><?= ($users['prenom']) ?></td>
-                        <td><?= ($users['email']) ?></td>
-                        <td><?= ($users['role']) ?></td>
+                        <td><?= ($listeUsers->getIdUser()) ?></td>
+                        <td><?= ($listeUsers->getNom()) ?></td>
+                        <td><?= ($listeUsers->getPrenom()) ?></td>
+                        <td><?= ($listeUsers->getEmail()) ?></td>
+                        <td><?= ($listeUsers->getRole()) ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </table>

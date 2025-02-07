@@ -1,5 +1,4 @@
 <?php
-require_once"../bdd/Bdd.php";
 class UserRepository{
     public function connexion(User $user){
         $bdd=new Bdd();
