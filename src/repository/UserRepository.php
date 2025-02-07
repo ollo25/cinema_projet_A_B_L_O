@@ -39,4 +39,23 @@ class UserRepository{
         $result = $req->fetch();
         return $result[0];
     }
+    public function listeUser(){
+        $listeUser = [];
+        $bdd = new Bdd();
+        $datebase = $bdd ->getBdd();
+        $req = $datebase->prepare('SELECT * FROM user');
+        $req->execute();
+        $listeUsersBdd = $req->fetchAll();
+        foreach($listeUsersBdd as $listeUserBdd){
+            $listeUser[] = new User([
+                'idUser' => $listeUserBdd['id_user'],
+                'nom' => $listeUserBdd['nom'],
+                'prenom' => $listeUserBdd['prenom'],
+                'email' => $listeUserBdd['email'],
+                'mdp' => $listeUserBdd['mdp'],
+                'role' => $listeUserBdd['role'],
+            ]);
+        }
+        return $listeUser;
+    }
 }

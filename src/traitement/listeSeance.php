@@ -44,13 +44,13 @@
                         <td>role</td>
                     </tr>
                     <?php foreach ($user as $users): ?>
-                    <tr>
-                        <td><?= ($users['id_user']) ?></td>
-                        <td><?= ($users['nom']) ?></td>
-                        <td><?= ($users['prenom']) ?></td>
-                        <td><?= ($users['email']) ?></td>
-                        <td><?= ($users['role']) ?></td>
-                    </tr>
+                        <tr>
+                            <td><?= ($users['id_user']) ?></td>
+                            <td><?= ($users['nom']) ?></td>
+                            <td><?= ($users['prenom']) ?></td>
+                            <td><?= ($users['email']) ?></td>
+                            <td><?= ($users['role']) ?></td>
+                        </tr>
                     <?php endforeach; ?>
                 </table>
                 <br>
