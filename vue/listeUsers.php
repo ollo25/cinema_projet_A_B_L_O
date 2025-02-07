@@ -1,3 +1,17 @@
+<?php
+session_start();
+require_once "../src/bdd/Bdd.php";
+
+$bdd = new bdd();
+$db = $bdd->getBdd();
+
+$sql = "SELECT * FROM user";
+$stmt = $db->prepare($sql);
+$stmt->execute();
+$user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,33 +45,35 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h1>CINEMAX ADMIN post</h1>
+                <h1>CINEMAX ADMIN - Liste des utilisateurs</h1>
                 <br>
+                <table border="2">
+                    <tr>
+                        <td>ID</td>
+                        <td>nom</td>
+                        <td>prenom</td>
+                        <td>email</td>
+                        <td>role</td>
+                    </tr>
+                    <?php foreach ($user as $users): ?>
+                    <tr>
+                        <td><?= ($users['id_user']) ?></td>
+                        <td><?= ($users['nom']) ?></td>
+                        <td><?= ($users['prenom']) ?></td>
+                        <td><?= ($users['email']) ?></td>
+                        <td><?= ($users['role']) ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
                 <br>
-                <a class="btn btn-primary" href="listeUsers.php">Gestion Utilisateurs</a>
-                <br>
-                <br>
-                <a class="btn btn-primary" href="modifFilm.php">Gestion Films</a>
-                <br>
+                <h2> Inserer l'ID de l'utilisateur a modifier / supprimer : </h2>
+
+                <form action="modifUser.php" method="post">
+                    <label >ID : </label>
+                    <input name="idSaisie" type="number" required>
+                    <button class="btn btn-primary" style="margin-top: 10px;" type="submit">Continuer</button>
+                </form>
             </div>
         </div>
     </div>
 </header>
-<!-- About-->
-<!-- Projects-->
-<!-- Signup-->
-<!-- Contact-->
-<!-- Footer
-<footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
--->
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-</body>
-</html>
