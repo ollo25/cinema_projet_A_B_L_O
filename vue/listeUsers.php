@@ -67,7 +67,8 @@ $listeUser=$user->listeUser();
                 <form action="modifUser.php" method="post">
                     <label >ID : </label>
                     <input name="idSaisie" type="number" required>
-                    <button class="btn btn-primary" style="margin-top: 10px;" type="submit">Continuer</button>
+                    <button name="edit" class="btn btn-primary" style="margin-top: 10px;" type="submit">Modifier</button>
+                    <button name="delete" class="btn btn-primary" style="margin-top: 10px;" type="submit">Supprimer</button>
                 </form>
             </div>
         </div>
