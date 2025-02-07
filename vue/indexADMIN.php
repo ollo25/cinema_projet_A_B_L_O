@@ -36,7 +36,7 @@
                 <a class="btn btn-primary" href="listeUsers.php">Gestion Utilisateurs</a>
                 <br>
                 <br>
-                <a class="btn btn-primary" href="filmsGestion.php">Gestion Films</a>
+                <a class="btn btn-primary" href="affichageListeFilmsAdmin.php">Gestion Films</a>
                 <br>
             </div>
         </div>
