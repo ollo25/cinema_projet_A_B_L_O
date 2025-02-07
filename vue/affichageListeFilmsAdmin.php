@@ -12,7 +12,6 @@ $catalogue = $filmRepository->recupererFilms();
 <head>
     <meta charset="utf-8" />
     <title>Les films</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/affichageFilmsAdmin.css">
 
 </head>
@@ -23,7 +22,7 @@ $catalogue = $filmRepository->recupererFilms();
 
 <header class="masthead">
     <div class="text-center"
-                <h1>CINEMAX ADMIN - Liste des films</h1>
+                <h1><STRONG>ADMIN - Liste des films</STRONG> </h1>
                 <br>
                         <table class="table-custom">
                             <th>id</th>
