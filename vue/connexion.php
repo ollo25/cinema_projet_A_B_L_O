@@ -19,12 +19,12 @@
 <body id="page-top">
 <?php
 require_once 'PopUp.php';
-if(isset($_GET['erreur'])){
-    if($_GET['erreur']=="infoManquante"){
+if(isset($_GET['parametre'])){
+    if($_GET['parametre']=="infoManquante"){
         $pop = new PopUp();
         $pop->showPopup("Les informations fournies sont incomplètes");
     }
-    if($_GET['erreur']=="inconnu"){
+    if($_GET['parametre']=="inconnu"){
         $pop = new PopUp();
         $pop->showPopup("Erreur");
     }
@@ -41,7 +41,7 @@ if(isset($_GET['erreur'])){
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="Inscription.php">Inscription</a></li>
+
             </ul>
         </div>
     </div>
@@ -80,7 +80,7 @@ if(isset($_GET['erreur'])){
                     </div>
                 </form>
                 <div class="lienInscription" style="margin-top: 10px;">
-                    Nouveau? Je souhaite <a href="Inscription.php" class="header-button">M'inscrire</a> !
+                    Nouveau? Je souhaite <a href="inscription.php" class="header-button">M'inscrire</a> !
                 </div>
             </div>
         </div>

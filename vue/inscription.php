@@ -18,12 +18,12 @@
 <body id="page-top">
 <?php
 require_once 'PopUp.php';
-if(isset($_GET['erreur'])){
-    if($_GET['erreur']=="mdp"){
+if(isset($_GET['parametre'])){
+    if($_GET['parametre']=="mdp"){
         $pop = new PopUp();
         $pop->showPopup("Les mots de passes ne correspondent pas");
     }
-    if($_GET['erreur']=="champsVides"){
+    if($_GET['parametre']=="champsVides"){
         $pop = new PopUp();
         $pop->showPopup("Veuillez remplir tout les champs");
     }
@@ -39,9 +39,6 @@ if(isset($_GET['erreur'])){
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>
-            </ul>
         </div>
     </div>
 </nav>
@@ -97,9 +94,9 @@ if(isset($_GET['erreur'])){
                         <button class="btn btn-primary" type="submit" style="margin-top: 10px;"" type="submit">S'Inscrire</button>
                     </div>
                 </form>
-
-
-
+                <div class="lienConnexion" style="margin-top: 10px;">
+                    Vous avez déjà un compte ? Je souhaite <a href="connexion.php" class="header-button">Me connecter</a> !
+                </div>
             </div>
         </div>
     </div>

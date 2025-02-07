@@ -19,14 +19,14 @@
 <body id="page-top">
 <?php
 require_once 'PopUp.php';
-if(isset($_GET['erreur'])){
-    if($_GET['erreur']=="InfoManquante"){
+if(isset($_GET['parametre'])){
+    if($_GET['parametre']=="msgEnvoye"){
         $pop = new PopUp();
-        $pop->showPopup("Les informations fournies sont incomplètes");
+        $pop->showPopup("Le message a bien été envoyé");
     }
-    if($_GET['erreur']=="inconnu"){
+    if($_GET['parametre']=="infoManquante"){
         $pop = new PopUp();
-        $pop->showPopup("Erreur");
+        $pop->showPopup("Veuillez remplir tout les champs");
     }
 }
 

@@ -23,12 +23,20 @@ class UserRepository{
         $database=$bdd->getBdd();
         $req = $database->prepare("INSERT INTO user(nom,prenom,email,mdp,role) values(:nom,:prenom,:email,:mdp,:role) ");
         $req->execute(array(
-            "nom" => $_POST["nom"],
-            "prenom" => $_POST["prenom"],
-            "email" => $_POST["email"],
-            "mdp" => $_POST["mdp"],
-            "role"=>"user"
+            "nom" => $user->getNom(),
+            "prenom" => $user->getPrenom(),
+            "email" => $user->getEmail(),
+            "mdp" => $user->getMdp(),
+            "role" => $user->getRole()
         ));
         return $user;
+    }
+    public function nombreUtilisateur(){
+        $bdd = new Bdd;
+        $database = $bdd->getBdd();
+        $req = $database->prepare('SELECT COUNT(id_user) FROM user');
+        $req->execute();
+        $result = $req->fetch();
+        return $result[0];
     }
 }

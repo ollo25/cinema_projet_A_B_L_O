@@ -1,5 +1,4 @@
 <?php
-require_once "src/bdd/Bdd.php";
 class FilmRepository{
     public function recupererFilms(){
         $films = [];
