@@ -58,7 +58,7 @@ class UserRepository{
         return $listeUser;
     }
     public function modifUser(User $user){
-        $bdd = new Bdd;
+        $bdd = new Bdd();
         $database=$bdd->getBdd();
         $req = $database->prepare("UPDATE user SET role = :role WHERE id_user = :id_user");
         $req->execute(array(
@@ -68,7 +68,7 @@ class UserRepository{
         return $user;
     }
     public function deleteUser(User $user){
-        $bdd = new Bdd;
+        $bdd = new Bdd();
         $database=$bdd->getBdd();
         $req = $database->prepare("DELETE FROM user WHERE id_user = :id_user");
         $req->execute(array(
