@@ -21,10 +21,11 @@ $catalogue = $filmRepository->recupererFilms();
 </style>
 
 <header class="masthead">
+
     <div class="text-center"
-                <h1><STRONG>ADMIN - Liste des films</STRONG> </h1>
-                <br>
-                        <table class="table-custom">
+    <h1><STRONG>ADMIN - Liste des films</STRONG> </h1>
+    <br>
+                        <table class="table-custom text-center">
                             <th>id</th>
                             <th>Titre</th>
                             <th>Description</th>
