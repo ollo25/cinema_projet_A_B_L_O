@@ -2,6 +2,7 @@
 require_once "../src/bdd/Bdd.php";
 require_once "../src/modele/User.php";
 require_once "../src/repository/UserRepository.php";
+
 $user=new UserRepository();
 $listeUser=$user->listeUser();
 ?>
@@ -17,16 +18,24 @@ $listeUser=$user->listeUser();
 
 </head>
 <body id="page-top">
+<?php require_once 'PopUp.php';
+if(isset($_GET['parametre'])){
+    if($_GET['parametre']=="modificationReussie"){
+        $pop = new PopUp();
+        $pop->showPopup("Modification du rôle réussie");
+    }
+    if($_GET['parametre']=="suprresionReussie"){
+        $pop = new PopUp();
+        $pop->showPopup("Suppression de l'utilisateur reussie");
+    }
+    if($_GET['parametre']=="erreur"){
+        $pop = new PopUp();
+        $pop->showPopup("Erreur");
+    }
 
+} ?>
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-    </div>
-</nav>
+<a href="../index.php">Retour Index</a>
 <!-- Masthead-->
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
@@ -58,11 +67,20 @@ $listeUser=$user->listeUser();
                 <br>
                 <h2> Inserer l'ID de l'utilisateur a modifier / supprimer : </h2>
 
-                <form action="modifUser.php" method="post">
+                <form action="../src/traitement/modifUser.php" method="post">
                     <label >ID : </label>
-                    <input name="idSaisie" type="number" required>
-                    <button name="edit" class="btn btn-primary" style="margin-top: 10px;" type="submit">Modifier</button>
-                    <button name="delete" class="btn btn-primary" style="margin-top: 10px;" type="submit">Supprimer</button>
+                    <select name="idSaisie" required>
+                    <?php
+                    /** @var User $user */
+                    foreach ($listeUser as $user): ?>
+                        <option value="<?=$user->getIdUser()?>"><?=$user->getEmail()?></option>
+                    <?php endforeach; ?>
+                    </select>
+                    <br>
+                    <button name="button" value="admin" class="btn btn-primary" style="margin-top: 10px;" type="submit">Admin</button>
+                    <button name="button" value="suppr" class="btn btn-primary" style="margin-top: 10px;" type="submit">Supprimer</button>
+                    <button name="button" value="user" class="btn btn-primary" style="margin-top: 10px;" type="submit">User</button>
+
                 </form>
             </div>
         </div>
