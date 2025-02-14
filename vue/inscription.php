@@ -50,7 +50,7 @@ if(isset($_GET['parametre'])){
 
                 <form action="../src/traitement/gestionInscription.php" method="post">
                     <div class="titreInscription">
-                        <h3><u>INSCRIPTION</u></h3>
+                        <h3><u style="font-family: 'Helvetica Neue'"><strong>INSCRIPTION</strong></u></h3>
                     </div>
 
                     <div class="input-group mb-3" style="margin-top: 10px;">

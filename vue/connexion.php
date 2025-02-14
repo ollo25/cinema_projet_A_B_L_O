@@ -50,8 +50,8 @@ if(isset($_GET['parametre'])){
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
-            <div class="text-center">
-                <h3><u><strong>CONNEXION</strong></u></h3>
+            <div class="text-center ">
+                 <h3><u style="font-family: 'Helvetica Neue'"><strong>CONNEXION</strong></u></h3>
                 <form action="../src/traitement/gestionConnexion.php" method="post">
                     <div class="input-group mb-3" style="margin-top: 10px;">
                         <span class="input-group-text">📧</span>
