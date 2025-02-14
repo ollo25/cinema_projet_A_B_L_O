@@ -3,19 +3,45 @@
 
 
 <body>
+
 <?php
+session_start();
+if (!isset($_SESSION['connexionAdmin'])) {
+    header('location: ../index.php?parametre=fakeAdmin');
+} elseif (!$_SESSION['connexionAdmin']) {
+    header('location: ../index.php?parametre=fakeAdmin');
+}
+
 require_once "../src/bdd/Bdd.php";
 require_once "../src/modele/Film.php";
 require_once "../src/repository/FilmRepository.php";
 
+
+require_once 'PopUp.php';
+if(isset($_GET['parametre'])){
+    if($_GET['parametre']=="update"){
+        $pop = new PopUp();
+        $pop->showPopup("L'update a bien été faite");
+    }
+    if($_GET['parametre']=="ajoutReussi"){
+        $pop = new PopUp();
+        $pop->showPopup("L'ajout a bien été fait");
+    }
+    if($_GET['parametre']=="erreur"){
+        $pop = new PopUp();
+        $pop->showPopup("Erreur");
+    }
+}
+
 $film=new FilmRepository();
 $listeFilm=$film->recupererFilms();
 ?>
+
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h1>CINEMAX ADMIN - Liste des utilisateurs</h1>
+                <h1>CINEMAX ADMIN - Liste des Films</h1>
                 <br>
                 <table border="2">
                     <tr>
@@ -43,7 +69,7 @@ $listeFilm=$film->recupererFilms();
                 <br>
                 <h2> Inserer l'ID de l'utilisateur a modifier / supprimer : </h2>
 
-                <form action="../src/traitement/modifUser.php" method="post">
+                <form action="../src/traitement/gestionFilm.php" method="post">
                     <label >Films :</label>
                     <select name="idSaisie" required>
                         <?php

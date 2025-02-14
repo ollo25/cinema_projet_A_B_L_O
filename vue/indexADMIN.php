@@ -15,6 +15,14 @@
     <!-- Core theme CSS (includes Bootstrap)-->
 </head>
 <body id="page-top">
+<?php session_start();
+if(!isset($_SESSION['connexionAdmin'])){
+    header('location: ../index.php?parametre=fakeAdmin');
+}
+elseif (!$_SESSION['connexionAdmin']){
+    header('location: ../index.php?parametre=fakeAdmin');
+}
+?>
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -36,7 +44,7 @@
                 <a class="btn btn-primary" href="listeUsers.php">Gestion Utilisateurs</a>
                 <br>
                 <br>
-                <a class="btn btn-primary" href="affichageListeFilmsAdmin.php">Gestion Films</a>
+                <a class="btn btn-primary" href="listeFilms.php">Gestion Films</a>
                 <br>
             </div>
         </div>

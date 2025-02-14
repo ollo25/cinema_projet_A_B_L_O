@@ -4,7 +4,7 @@ require_once "../modele/User.php";
 require_once "../repository/UserRepository.php";
 $idUser = $_POST['idSaisie'];
 if (isset($_POST['button'])){
-    if($_POST['button'] == "admin" || $_POST['button'] == "user"){
+    if($_POST['button'] == "suppr" || $_POST['button'] == "user"){
         if($_POST['button'] == "admin"){
             $role= "admin";
         }

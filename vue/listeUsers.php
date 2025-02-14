@@ -3,6 +3,13 @@ require_once "../src/bdd/Bdd.php";
 require_once "../src/modele/User.php";
 require_once "../src/repository/UserRepository.php";
 
+session_start();
+if (!isset($_SESSION['connexionAdmin'])) {
+    header('location: ../index.php?parametre=fakeAdmin');
+} elseif (!$_SESSION['connexionAdmin']) {
+    header('location: ../index.php?parametre=fakeAdmin');
+}
+
 $user=new UserRepository();
 $listeUser=$user->listeUser();
 ?>
@@ -67,7 +74,7 @@ if(isset($_GET['parametre'])){
                 <br>
                 <h2> Inserer l'ID de l'utilisateur a modifier / supprimer : </h2>
 
-                <form action="../src/traitement/modifUser.php" method="post">
+                <form action="../src/traitement/GestionUser.php" method="post">
                     <label >ID : </label>
                     <select name="idSaisie" required>
                     <?php

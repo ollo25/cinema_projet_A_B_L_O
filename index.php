@@ -28,6 +28,10 @@ if(isset($_GET['parametre'])){
         $pop = new PopUp();
         $pop->showPopup("Erreur");
     }
+    elseif($_GET['parametre']=="fakeAdmin"){
+        $pop = new PopUp();
+        $pop->showPopup("TU AS ESSAYE DE M'AVOIR AVEC TON LIEN");
+    }
 }
 
 ?>
