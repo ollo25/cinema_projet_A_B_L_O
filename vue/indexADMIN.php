@@ -46,6 +46,9 @@ elseif (!$_SESSION['connexionAdmin']){
                 <br>
                 <a class="btn btn-primary" href="listeFilms.php">Gestion Films</a>
                 <br>
+                <br>
+                <a class="btn btn-primary" href="listeSeances.php">Gestion Séances</a>
+                <br>
             </div>
         </div>
     </div>

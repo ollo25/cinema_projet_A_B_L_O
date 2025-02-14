@@ -17,7 +17,7 @@ $catalogue = $filmRepository->recupererFilms();
     <link href="../assets/css/pageCatalogue.css" rel="stylesheet" />
 </head>
 <body>
-
+<a href="../index.php">Retour Accueil</a>
     <h1 style="font-family: 'Playfair Display', serif; "><strong><u>Catalogue</u></strong></h1>
 
 

@@ -1,8 +1,15 @@
 
 <?php
 require_once "../src/bdd/Bdd.php";
+require_once "../src/modele/Seance.php";
+require_once "../src/repository/SeanceRepository.php";
 require_once "../src/modele/Film.php";
 require_once "../src/repository/FilmRepository.php";
+$seance=new SeanceRepository();
+$listeSeance=$seance->recupererSeance();
+$film = new FilmRepository();
+$listeFilm=$film->recupererFilms();
+
 session_start();
 if (!isset($_SESSION['connexionAdmin'])) {
     header('location: ../index.php?parametre=fakeAdmin');
@@ -22,6 +29,7 @@ if (!isset($_SESSION['connexionAdmin'])) {
 
 </head>
 <body id="page-top">
+PAGE NON FONCTIONNELLE POUR L'INSTANT
 <?php require_once 'PopUp.php';
 if(isset($_GET['parametre'])){
     if($_GET['parametre']=="suprresionReussie"){
@@ -50,11 +58,21 @@ if(isset($_GET['parametre'])){
                 <h1>CINEMAX ADMIN - Ajout d'un nouveau film</h1>
                 <!-- le htmlspecialchars permet de pouvoir mettre des espaces / charactères speciaux dans les placeholders-->
                 <form action="../src/traitement/ajoutFilm.php" method="post">
-                    <label>Titre <input type="text"  name="titreNvFilm" class="auto-width"></label>
-                    <label>Description <input type="text" name="descriptionNvFilm" class="auto-width"></label>
-                    <label>Genre <input type="text"  name="genreNvFilm" class="auto-width"></label>
-                    <label>Duree <input type="time"  name="dureeNvFilm" class="auto-width"></label>
-                    <label>Affiche <input type="text" name="afficheNvFilm" class="auto-width"></label>
+                    <label>Film <br>
+                        <select name="idFilmSaisi" required>
+                            <?php
+                            foreach ($listeFilm as $listeFilms): ?>
+                                <option value="<?=$listeFilms->getIdFilm()?>"><?=$listeFilms->getTitre()?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <br>
+                    </label>
+
+                    <label>Date <input type="date"  name="dateNvSeance" class="auto-width"></label>
+                    <label>Heure Debut <input type="time" name="heureDNvSeance" class="auto-width"></label>
+                    <label>Heure Fin <input type="time" name="heureFNvSeance" class="auto-width"></label>
+                    <label>Salle <input type="text"  name="salleNvSeance" class="auto-width"></label>
+                    <label>Place dispo <input type="text"  name="placeDispoSeance" class="auto-width"></label>
                     <input type="submit" value="Ajouter">
                 </form>
             </div>

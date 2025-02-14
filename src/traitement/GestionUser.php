@@ -3,8 +3,10 @@ require_once "../bdd/Bdd.php";
 require_once "../modele/User.php";
 require_once "../repository/UserRepository.php";
 $idUser = $_POST['idSaisie'];
+var_dump($_POST);
 if (isset($_POST['button'])){
-    if($_POST['button'] == "suppr" || $_POST['button'] == "user"){
+    echo "sgdfgdghd";
+    if($_POST['button'] == "admin" || $_POST['button'] == "user"){
         if($_POST['button'] == "admin"){
             $role= "admin";
         }
@@ -41,16 +43,6 @@ if (isset($_POST['button'])){
     }
 }
 
-
-if(isset($_POST['user'])){
-    $role = $_POST['user'];
-}
-elseif(isset($_POST['admin'])){
-    $role = $_POST['admin'];
-}
-if (isset($_POST['suppr'])){
-
-}
 
 ?>
 <!DOCTYPE html>

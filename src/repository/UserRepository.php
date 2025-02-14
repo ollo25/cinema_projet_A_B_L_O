@@ -18,7 +18,7 @@ class UserRepository{
         return $user;
     }
     public function inscription(User $user){
-        $bdd=new Bdd;
+        $bdd=new Bdd();
         $database=$bdd->getBdd();
         $req = $database->prepare("INSERT INTO user(nom,prenom,email,mdp,role) values(:nom,:prenom,:email,:mdp,:role) ");
         $req->execute(array(
@@ -31,7 +31,7 @@ class UserRepository{
         return $user;
     }
     public function nombreUtilisateur(){
-        $bdd = new Bdd;
+        $bdd = new Bdd();
         $database = $bdd->getBdd();
         $req = $database->prepare('SELECT COUNT(id_user) FROM user');
         $req->execute();

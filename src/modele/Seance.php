@@ -5,27 +5,10 @@ class Seance
     private $idSeance;
     private $idFilm;
     private $date;
-    private $heure;
+    private $heure_debut;
+    private $heure_fin;
     private $idSalle;
     private $placeDispo;
-
-    public function __construct(array $donnees)
-    {
-        $this->hydrate($donnees);
-    }
-
-    private function hydrate(array $donnees) {
-        foreach ($donnees as $key => $value) {
-            // On récupère le nom du setter correspondant à l'attribut
-            $method = 'set'.ucfirst($key);
-
-            // Si le setter correspondant existe.
-            if (method_exists($this, $method)) {
-                // On appelle le setter
-                $this->$method($value);
-            }
-        }
-    }
 
     /**
      * @return mixed
@@ -78,17 +61,33 @@ class Seance
     /**
      * @return mixed
      */
-    public function getHeure()
+    public function getHeureDebut()
     {
-        return $this->heure;
+        return $this->heure_debut;
     }
 
     /**
-     * @param mixed $heure
+     * @param mixed $heure_debut
      */
-    public function setHeure($heure)
+    public function setHeureDebut($heure_debut)
     {
-        $this->heure = $heure;
+        $this->heure_debut = $heure_debut;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeureFin()
+    {
+        return $this->heure_fin;
+    }
+
+    /**
+     * @param mixed $heure_fin
+     */
+    public function setHeureFin($heure_fin)
+    {
+        $this->heure_fin = $heure_fin;
     }
 
     /**
@@ -123,4 +122,23 @@ class Seance
         $this->placeDispo = $placeDispo;
     }
 
+    public function __construct(array $donnees)
+    {
+        $this->hydrate($donnees);
+    }
+
+    private function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value) {
+            // On récupère le nom du setter correspondant à l'attribut
+            $method = 'set' . ucfirst($key);
+
+            // Si le setter correspondant existe.
+            if (method_exists($this, $method)) {
+                // On appelle le setter
+                $this->$method($value);
+            }
+        }
+    }
 }
+

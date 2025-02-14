@@ -16,7 +16,8 @@ class SeanceRepository
                 'idSeance' => $seanceBdd['id_seance'],
                 'idFilm' => $seanceBdd['id_film'],
                 'date' => $seanceBdd['date'],
-                'heure' => $seanceBdd['heure'],
+                'heure_debut' => $seanceBdd['heure_debut'],
+                'heure_fin' => $seanceBdd['heure_fin'],
                 'idSalle' => $seanceBdd['id_salle'],
                 'placeDispo' => $seanceBdd['place_dispo'],
             ]);
