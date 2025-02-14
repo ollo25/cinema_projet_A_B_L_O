@@ -1,0 +1,19 @@
+- Gerer le fait d'etre connecté (admin / user / contact /!\), et d'y rester
+
+- Chiffer les mdp avec password_hash()
+
+- Faire tout ce qui concerne reservation / seance (CRUD)
+(faire en sorte que tout soit quasi que du copier coller pour le CRUD, pcq c tout le temps la meme)
+
+- Rajouter des menus partout pour pouvoir bien naviguer
+
+- Changer la DA du site et mettre des bootstraps / changer l'image de merde
+
+- Rajouter un bouton pour les clients, qui affichent leurs Reservations du present et du passé 
+
+- 
+
+OPTIONNEL
+- faire l'oubli de mdp et l'envoie d'email
+- mettre des protections contre les attaques courantes (injections SQL, XSS). 
+

@@ -2,44 +2,84 @@
 require_once "../src/bdd/Bdd.php";
 require_once "../src/modele/Film.php";
 require_once "../src/repository/FilmRepository.php";
+require_once "../src/repository/SeanceRepository.php";
 $filmRepository = new FilmRepository();
 /** @var Film[] $catalogue */
-$catalogue = $filmRepository->recupererFilms();
+$reservation = $filmRepository->recupererFilms();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Catalogue</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Réservation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-    <link href="../assets/css/pageCatalogue.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 <body>
 <a href="../index.php">Retour Accueil</a>
-    <h1 style="font-family: 'Playfair Display', serif; "><strong><u>Catalogue</u></strong></h1>
+<h1 style="font-family: 'Playfair Display', serif; "><strong><u>Réservation</u></strong></h1>
+<?php foreach($reservation as $film){ ?>
 
 
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="<?=$film->getAffiche() ?>" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><strong><u><?=$film->getTitre() ?></u></strong></h5>
+                <br>
+                <p class="card-text"><em><?=$film->getDescription() ?></em></p>
+                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
 
-    <div class="row">
-        <?php foreach($catalogue as $film){ ?>
-            <div class="col-md-3">
-                <div class="card mb-4">
-                    <img src="<?=$film->getAffiche() ?>" class="card-img-top" alt="Affiche de <?=$film->getTitre() ?>">
-                    <div class="card-body">
-                        <h5 class="card-title"><u style="font-family: 'Lucida Bright' "><?=$film->getTitre() ?></u></h5>
-                        <p class="card-text"><em><?=$film->getDescription() ?></em></p>
+        <!-- Button trigger modal -->
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Réserver
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation de réservation <i class="bi bi-film"></i></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <ul class="list-group list-group-flush ">
-                        <li class="list-group-item"><a href="#" class="card-link">Réserver</a></li>
-                    </ul>
+                    <div class="modal-body  ">
+                        <u style="font-family: 'Bauhaus 93'">Choisir une séance pour regarder le film <?=$film->getTitre() ?></u>:
+                        <span class="badge text-bg-dark" id="date">Jour</span>
+                        <BR>
+                        <button type="button" class="btn btn-light">13H00-14h00</button> <button type="button" class="btn btn-light">15h00-16h00</button>
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-light">16h00-17h00</button> <button type="button" class="btn btn-light">17h00-18h00</button>
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-light">19h00-20h00</button> <button type="button" class="btn btn-light">20h00-21h00</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Changer de film</button>
+                        <button type="button" class="btn btn-primary">Réserver</button>
+
+                    </div>
                 </div>
             </div>
+        </div>
+
+
+</div>
+</div>
+    <br>
         <?php } ?>
     </div>
-
-
-
+</div>
+</div>
 </body>
 </html>

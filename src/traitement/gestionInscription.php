@@ -1,4 +1,5 @@
 <?php
+require_once "../bdd/Bdd.php";
 require_once"../modele/User.php";
 require_once"../repository/UserRepository.php";
 if (!empty($_POST["email"]) &&
