@@ -51,7 +51,7 @@ if(isset($_GET['parametre'])){
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center ">
-                 <h3><u style="font-family: 'Helvetica Neue'"><strong>CONNEXION</strong></u></h3>
+                 <h3><u style="font-family: 'Helvetica Neue',serif"><strong>CONNEXION</strong></u></h3>
                 <form action="../src/traitement/gestionConnexion.php" method="post">
                     <div class="input-group mb-3" style="margin-top: 10px;">
                         <span class="input-group-text">📧</span>
@@ -95,6 +95,6 @@ if(isset($_GET['parametre'])){
 <!-- Bootstrap core JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS -->
-<script src="js/scripts.js"></script>
+<script src="/assets/js/scripts.js"></script>
 <!-- SB Forms JS -->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>

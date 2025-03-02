@@ -10,6 +10,9 @@ if (!empty($_POST["email"]) &&
 
 
         if(($_POST["mdp"]==$_POST["mdpC"])) {
+            $hashpassword = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
+            session_start();
+
             $userRepository = new UserRepository();
             $nbUser=$userRepository->nombreUtilisateur();
             if($nbUser==0) {
@@ -21,12 +24,11 @@ if (!empty($_POST["email"]) &&
             "email" => $_POST["email"],
             "nom" => $_POST["nom"],
             "prenom" => $_POST["prenom"],
-            "mdp" => $_POST["mdp"],
+            "mdp" => $hashpassword,
             "role"=> $role
         ]);
         $user = $userRepository->inscription($user);
 
-        session_start();
         $_SESSION["email"] = $_POST["email"];
         $_SESSION["mdp"] = $_POST["mdp"];
         $_SESSION["role"] = $role;
@@ -36,7 +38,7 @@ if (!empty($_POST["email"]) &&
 
         header("Location: ../../index.php?parametre=inscrit");
     } else {
-        header("Location: ../../vue/inscription.php?parametre=mdp");
+         header("Location: ../../vue/inscription.php?parametre=mdp");
     }
 
 }

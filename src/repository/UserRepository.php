@@ -3,13 +3,13 @@ class UserRepository{
     public function connexion(User $user){
         $bdd=new Bdd();
         $database=$bdd->getBdd();
-        $req = $database->prepare('SELECT * FROM user WHERE email = :email AND mdp = :mdp');
+        $req = $database->prepare('SELECT * FROM user WHERE email = :email');
         $req->execute(array(
-            'email' => $user->getEmail(),
-            'mdp' => $user->getMdp()
+            'email' => $user->getEmail()
         ));
         $utilisateur = $req->fetch();
         if($utilisateur){
+            $user->setMdp($utilisateur['mdp']);
             $user->setNom($utilisateur["nom"]);
             $user->setRole($utilisateur["role"]);
             $user->setIdUser($utilisateur["id_user"]);
