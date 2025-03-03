@@ -16,14 +16,53 @@ class SeanceRepository
                 'idSeance' => $seanceBdd['id_seance'],
                 'idFilm' => $seanceBdd['id_film'],
                 'date' => $seanceBdd['date'],
-                'heure_debut' => $seanceBdd['heure_debut'],
-                'heure_fin' => $seanceBdd['heure_fin'],
+                'heureDebut' => $seanceBdd['heure_debut'],
+                'heureFin' => $seanceBdd['heure_fin'],
                 'idSalle' => $seanceBdd['id_salle'],
                 'placeDispo' => $seanceBdd['place_dispo'],
             ]);
         }
         return $seance;
     }
+    public function nvSeance(Seance $seance) {
+        $bdd = new Bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare('INSERT INTO film (id_film, date, heure_debut,heure_fin,id_salle,place_dispo) VALUES (:id_film,:date,:heure_debut,:heure_fin,:id_salle,:place_dispo)');
+        $req->execute([
+            'id_film' => $seance->getIdFilm(),
+            'date' => $seance->getDate(),
+            'heure_debut' => $seance->getHeureDebut(),
+            'heure_fin' => $seance->getHeureFin(),
+            'id_salle' => $seance->getIdSalle(),
+            'place_dispo' => $seance->getPlaceDispo()
+        ]);
+        return $seance;
+    }
+    public function recupererFilmTitreLierASeance($id_seance) {
+        $bdd = new Bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare("SELECT f.titre FROM film f WHERE f.id_film = (SELECT s.id_film FROM seance s WHERE s.id_seance = :id_seance)");
+
+        $req->execute(array('id_seance' => $id_seance));
+        $filmBdd = $req->fetch();
+        $filmTitre = $filmBdd['titre'];
+
+
+        return $filmTitre;
+    }
+    public function recupererSalleNumLierASeance($id_seance) {
+        $bdd = new Bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare("SELECT sa.numero FROM salle sa WHERE sa.id_salle = (SELECT s.id_salle FROM seance s WHERE s.id_seance = :id_seance)");
+
+        $req->execute(array('id_seance' => $id_seance));
+        $salleBdd = $req->fetch();
+        $salleNum = $salleBdd['numero'];
+
+
+        return $salleNum;
+    }
+
 
 
 }

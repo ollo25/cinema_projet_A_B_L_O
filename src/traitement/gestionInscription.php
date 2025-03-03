@@ -34,8 +34,6 @@ if (!empty($_POST["email"]) &&
         $_SESSION["role"] = $role;
         $_SESSION["nom"] = $_POST["nom"];
         $_SESSION["prenom"] = $_POST["prenom"];
-        $_SESSION["connexion"] = true;
-
         header("Location: ../../index.php?parametre=inscrit");
     } else {
          header("Location: ../../vue/inscription.php?parametre=mdp");

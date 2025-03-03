@@ -16,7 +16,6 @@ require_once "../src/bdd/Bdd.php";
 require_once "../src/modele/Seance.php";
 require_once "../src/repository/SeanceRepository.php";
 
-
 require_once 'PopUp.php';
 if(isset($_GET['parametre'])){
     if($_GET['parametre']=="update"){
@@ -46,35 +45,37 @@ AF
                 <br>
                 <table border="2">
                     <tr>
-                        <td>ID - Séance</td>
+                        <td>ID Séance</td>
                         <td>Film</td>
-                        <td>Salle</td>
+                        <td>Salle n°</td>
                         <td>Date</td>
-                        <td>Heure</td>
+                        <td>Heure Debut</td>
+                        <td>Heure Fin</td>
                         <td>Places disponibles</td>
                     </tr>
 
                     <?php
-                    /** @var $listeSeance $ */
+                    /** @var $listeSeances $ */
                     foreach ($listeSeance as $listeSeances): ?>
                         <tr>
-                            <td><?= ($listeSeance->getIdSeance()) ?></td>
-                            <td><?= ($listeSeance->getIdFilm()) ?></td>
-                            <td><?= ($listeSeance->getSalle()) ?></td>
-                            <td><?= ($listeSeance->getDate()) ?></td>
-                            <td><?= ($listeSeance->getHeure()) ?></td>
-                            <td><?= ($listeSeance->getPlaceDispo()) ?></td>
+                            <td><?= ($listeSeances->getIdSeance()) ?></td>
+                            <td><?= ($seance->recupererFilmTitreLierASeance($listeSeances->getIdSeance())) ?></td>
+                            <td><?= ($seance->recupererSalleNumLierASeance($listeSeances->getIdSeance())) ?></td>
+                            <td><?= ($listeSeances->getDate()) ?></td>
+                            <td><?= ($listeSeances->getHeureDebut()) ?></td>
+                            <td><?= ($listeSeances->getHeureFin() )?></td>
+                            <td><?= ($listeSeances->getPlaceDispo() )?></td>
+
                         </tr>
                     <?php endforeach; ?>
                 </table>
                 <br>
                 <h2> Inserer l'ID de la séance a modifier / supprimer : </h2>
 
-                <form action="../src/traitement/gestionFilm.php" method="post">
-                    <label >Films :</label>
+                <form action="../src/traitement/gestionSeance.php" method="post">
+                    <label >Seance :</label>
                     <select name="idSaisie" required>
                         <?php
-                        /** @var User $user */
                         foreach ($listeSeance as $listeSeances): ?>
                             <option value="<?=$listeSeances->getIdSeance()?>"><?=$listeSeances->getIdSeance()?></option>
                         <?php endforeach; ?>
