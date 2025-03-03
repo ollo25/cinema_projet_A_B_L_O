@@ -26,6 +26,10 @@ if(isset($_GET['parametre'])){
         $pop = new PopUp();
         $pop->showPopup("L'ajout a bien été fait");
     }
+    if($_GET['parametre']=="suppression"){
+        $pop = new PopUp();
+        $pop->showPopup("Suppression reussie");
+    }
     if($_GET['parametre']=="erreur"){
         $pop = new PopUp();
         $pop->showPopup("Erreur");
@@ -35,8 +39,6 @@ if(isset($_GET['parametre'])){
 $seance=new SeanceRepository();
 $listeSeance=$seance->recupererSeance();
 ?>
-PAGE NON FONCTIONNELLE POUR L'INSTANT
-AF
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
@@ -74,7 +76,7 @@ AF
 
                 <form action="../src/traitement/gestionSeance.php" method="post">
                     <label >Seance :</label>
-                    <select name="idSaisie" required>
+                    <select name="idSeanceSelection" required>
                         <?php
                         foreach ($listeSeance as $listeSeances): ?>
                             <option value="<?=$listeSeances->getIdSeance()?>"><?=$listeSeances->getIdSeance()?></option>

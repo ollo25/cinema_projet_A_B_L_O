@@ -71,6 +71,39 @@ class SeanceRepository
         ));
         return $seance;
     }
+    public function recupererInfoUniqueSeance(Seance $seance){
+        $bdd = new Bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare('SELECT * FROM seance WHERE id_seance = :id_seance');
+        $req->execute(array(
+            "id_seance" => $seance->getIdSeance()
+        ));
+        $seanceBdd = $req->fetch();
+        return new Seance([
+            'idSeance' => $seanceBdd['id_seance'],
+            'idFilm' => $seanceBdd['id_film'],
+            'date' => $seanceBdd['date'],
+            'heureDebut' => $seanceBdd['heure_debut'],
+            'heureFin' => $seanceBdd['heure_fin'],
+            'idSalle' => $seanceBdd['id_salle'],
+            'placeDispo' => $seanceBdd['place_dispo'],
+        ]);
+
+    }
+    public function updateSeance(Seance $seance) {
+        $bdd = new Bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare('UPDATE seance SET id_film = :id_film, date = :date, heure_debut = :heure_debut, heure_fin = :heure_fin, id_salle = :id_salle WHERE id_seance = :id_seance');
+        $seance = $req->execute([
+            'id_seance' => $seance->getIdSeance(),
+            'id_film' => $seance->getidFilm(),
+            'date' => $seance->getDate(),
+            'heure_debut' => $seance->getheureDebut(),
+            'heure_fin' => $seance->getheureFin(),
+            'id_salle' => $seance->getIdSalle()
+        ]);
+        return $seance;
+    }
 
 
 

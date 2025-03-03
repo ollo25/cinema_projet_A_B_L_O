@@ -27,6 +27,10 @@ if(isset($_GET['parametre'])){
         $pop = new PopUp();
         $pop->showPopup("L'ajout a bien été fait");
     }
+    if($_GET['parametre']=="suppression"){
+        $pop = new PopUp();
+        $pop->showPopup("Suppression reussie");
+    }
     if($_GET['parametre']=="erreur"){
         $pop = new PopUp();
         $pop->showPopup("Erreur");

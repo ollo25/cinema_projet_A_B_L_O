@@ -54,7 +54,6 @@ if(isset($_GET['parametre'])){
                 ]);
                 $filmRepo = new filmRepository();
                 $film = $filmRepo->recupererInfoUniqueFilm($filmModele);
-
                 ?>
                 <!-- le htmlspecialchars permet de pouvoir mettre des espaces / charactères speciaux dans les placeholders-->
                 <form action="../src/traitement/modifFilm.php" method="post">

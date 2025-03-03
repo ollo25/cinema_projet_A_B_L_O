@@ -15,7 +15,7 @@ if (isset($_POST['button'])){
         $filmRepo=new FilmRepository();
         $test = $filmRepo->deleteFilm($film);
         if($test){
-            header("Location:../../vue/listeFilms.php?parametre=suppressionReussie");
+            header("Location:../../vue/listeFilms.php?parametre=suppression");
         }
         else{
             header("Location:../../vue/listeFilm.php?parametre=erreur");

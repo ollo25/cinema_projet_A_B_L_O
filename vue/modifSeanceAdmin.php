@@ -1,8 +1,16 @@
 
 <?php
 require_once "../src/bdd/Bdd.php";
+require_once "../src/modele/Seance.php";
+require_once "../src/repository/SeanceRepository.php";
 require_once "../src/modele/Film.php";
 require_once "../src/repository/FilmRepository.php";
+require_once "../src/modele/Salle.php";
+require_once "../src/repository/SalleRepository.php";
+$film = new FilmRepository();
+$listeFilm=$film->recupererFilms();
+$salle=new SalleRepository();
+$listeSalle=$salle->recupererSalle();
 session_start();
 if (!isset($_SESSION['connexionAdmin'])) {
     header('location: ../index.php?parametre=fakeAdmin');
@@ -47,22 +55,45 @@ if(isset($_GET['parametre'])){
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h1>CINEMAX ADMIN - Modifier un film</h1>
+                <h1>CINEMAX ADMIN - Modifier une Seance</h1>
                 <?php
-                $filmModele=new Film([
-                    'idFilm'=>$_SESSION['idFilmSelection']
+                $seanceModele=new Seance([
+                    'idSeance'=>$_SESSION['idSeanceSelection']
                 ]);
-                $filmRepo = new filmRepository();
-                $film = $filmRepo->recupererInfoUniqueFilm($filmModele);
-
+                $seanceRepo = new seanceRepository();
+                $seance = $seanceRepo->recupererInfoUniqueSeance($seanceModele);
                 ?>
                 <!-- le htmlspecialchars permet de pouvoir mettre des espaces / charactères speciaux dans les placeholders-->
-                <form action="../src/traitement/modifFilm.php" method="post">
-                    <label>Titre <input type="text" value="<?php echo htmlspecialchars($film->getTitre()); ?>" name="titreNvFilm" class="auto-width"></label>
-                    <label>Description <input type="text" value="<?php echo htmlspecialchars($film->getDescription()); ?>" name="descriptionNvFilm" class="auto-width"></label>
-                    <label>Genre <input type="text" value="<?php echo htmlspecialchars($film->getGenre()); ?>" name="genreNvFilm" class="auto-width"></label>
-                    <label>Duree <input type="text" value="<?php echo htmlspecialchars($film->getDuree()); ?>" name="dureeNvFilm" class="auto-width"></label>
-                    <label>Affiche <input type="text" value="<?php echo htmlspecialchars($film->getAffiche()); ?>" name="afficheNvFilm" class="auto-width"></label>
+                <form action="../src/traitement/modifSeance.php" method="post">
+                    <label>Film <br>
+                        <select name="filmNvSeance" required>
+                            <?php
+                            $film = htmlspecialchars($seance->getIdFilm());
+
+                            foreach ($listeFilm as $listeFilms): ?>                                      <!--racourci pour if -->
+                                <option value="<?=$listeFilms->getIdFilm()?>"<?=$listeFilms->getIdFilm() == $film ? 'selected' : '' ?>>
+                                    <?=$listeFilms->getTitre()?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <br>
+                    </label>
+                    <label>Date <input type="date" value="<?php echo htmlspecialchars($seance->getDate()); ?>" name="dateNvSeance" class="auto-width"></label>
+                    <label>Heure Début <input type="time" value="<?php echo htmlspecialchars($seance->getHeureDebut()); ?>" name="heureDNvSeance" class="auto-width"></label>
+                    <label>Heure Fin <input type="time" value="<?php echo htmlspecialchars($seance->getHeureFin()); ?>" name="heureFNvSeance" class="auto-width"></label>
+                    <label>Salle <br>
+                        <select name="salleNvSeance" required>
+                            <?php
+                            $salle = htmlspecialchars($seance->getIdSalle());
+
+                            foreach ($listeSalle as $listeSalles): ?>                                      <!--racourci pour if -->
+                                <option value="<?=$listeSalles->getIdSalle()?>"<?=$listeSalles->getIdSalle() == $salle ? 'selected' : '' ?>>
+                                    <?=$listeSalles->getNumero()?> - <?=$listeSalles->getNbplaces() ?> place(s)
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
+                    <br><br>
                     <input type="submit" value="Modifier">
                 </form>
             </div>

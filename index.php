@@ -51,7 +51,8 @@ if(isset($_GET['parametre'])){
             }
 
             if (!empty($_GET['deco']) && $_GET['deco'] == 'true') {
-                $_SESSION['connexion'] = false;
+                session_destroy();
+                $_SESSION=[];
                 header("Location: index.php");
             }
 
