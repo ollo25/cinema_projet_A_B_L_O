@@ -27,7 +27,7 @@ class SeanceRepository
     public function nvSeance(Seance $seance) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare('INSERT INTO film (id_film, date, heure_debut,heure_fin,id_salle,place_dispo) VALUES (:id_film,:date,:heure_debut,:heure_fin,:id_salle,:place_dispo)');
+        $req = $database->prepare('INSERT INTO seance (id_film, date, heure_debut,heure_fin,id_salle,place_dispo) VALUES (:id_film,:date,:heure_debut,:heure_fin,:id_salle,:place_dispo)');
         $req->execute([
             'id_film' => $seance->getIdFilm(),
             'date' => $seance->getDate(),
@@ -61,6 +61,15 @@ class SeanceRepository
 
 
         return $salleNum;
+    }
+    public function deleteSeance(Seance $seance){
+        $bdd = new Bdd();
+        $database=$bdd->getBdd();
+        $req = $database->prepare("DELETE FROM seance WHERE id_seance = :id_seance");
+        $req->execute(array(
+            "id_seance"=>$seance->getIdSeance()
+        ));
+        return $seance;
     }
 
 

@@ -5,8 +5,8 @@ class Seance
     private $idSeance;
     private $idFilm;
     private $date;
-    private $heure_debut;
-    private $heure_fin;
+    private $heureDebut;
+    private $heureFin;
     private $idSalle;
     private $placeDispo;
 
@@ -63,15 +63,15 @@ class Seance
      */
     public function getHeureDebut()
     {
-        return $this->heure_debut;
+        return $this->heureDebut;
     }
 
     /**
-     * @param mixed $heure_debut
+     * @param mixed $heureDebut
      */
-    public function setHeureDebut($heure_debut)
+    public function setHeureDebut($heureDebut)
     {
-        $this->heure_debut = $heure_debut;
+        $this->heureDebut = $heureDebut;
     }
 
     /**
@@ -79,15 +79,15 @@ class Seance
      */
     public function getHeureFin()
     {
-        return $this->heure_fin;
+        return $this->heureFin;
     }
 
     /**
-     * @param mixed $heure_fin
+     * @param mixed $heureFin
      */
-    public function setHeureFin($heure_fin)
+    public function setHeureFin($heureFin)
     {
-        $this->heure_fin = $heure_fin;
+        $this->heureFin = $heureFin;
     }
 
     /**

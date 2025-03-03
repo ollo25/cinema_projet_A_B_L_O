@@ -4,6 +4,23 @@ class Salle
 {
     private $idSalle;
     private $nbPlaces;
+    private $numero;
+
+    /**
+     * @return mixed
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * @param mixed $numero
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+    }
 
     public function __construct(array $donnees)
     {
