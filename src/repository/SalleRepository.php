@@ -28,58 +28,48 @@ class SalleRepository{
 
         return $salleNbPlaces;
     }
-    public function deleteFilm(Film $film){
+    public function deleteSalle(Salle $salle){
         $bdd = new Bdd();
         $database=$bdd->getBdd();
-        $req = $database->prepare("DELETE FROM film WHERE id_film = :id_film");
+        $req = $database->prepare("DELETE FROM salle WHERE id_salle = :id_salle");
         $req->execute(array(
-            "id_film"=>$film->getIdFilm()
+            "id_salle"=>$salle->getIdSalle()
         ));
-        return $film;
+        return $salle;
     }
-    public function recupererInfoUniqueFilm(Film $film){
+    public function recupererInfoUniqueSalle(Salle $salle){
             $bdd = new Bdd();
             $database = $bdd->getBdd();
-            $req = $database->prepare('SELECT * FROM film WHERE id_film = :id_film');
+            $req = $database->prepare('SELECT * FROM salle WHERE id_salle = :id_salle');
             $req->execute(array(
-                "id_film" => $film->getIdFilm()
+                "id_salle" => $salle->getIdSalle()
             ));
-            $filmsBdd = $req->fetch();
-            return new Film([
-                'idFilm' => $filmsBdd['id_film'],
-                'titre' => $filmsBdd['titre'],
-                'genre' => $filmsBdd['genre'],
-                'duree' => $filmsBdd['duree'],
-                'affiche' => $filmsBdd['affiche'],
-                'description' => $filmsBdd['description'],
+            $salleBdd = $req->fetch();
+            return new Salle([
+                'nbPlaces' => $salleBdd['nb_place'],
+                'numero' => $salleBdd['numero'],
             ]);
 
     }
-    public function updateFilm(Film $film) {
+    public function updateSalle(Salle $salle) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare('UPDATE film SET titre = :titre, genre = :genre, duree = :duree, affiche = :affiche, description = :description WHERE id_film = :id_film');
-        $film = $req->execute([
-            'id_film' => $film->getIdFilm(),
-            'titre' => $film->getTitre(),
-            'genre' => $film->getGenre(),
-            'duree' => $film->getDuree(),
-            'affiche' => $film->getAffiche(),
-            'description' => $film->getDescription()
+        $req = $database->prepare('UPDATE salle SET numero = :numero, nb_place = :nb_place WHERE id_salle = :id_salle');
+        $salle = $req->execute([
+            'id_salle' => $salle->getIdSalle(),
+            'numero' => $salle->getNumero(),
+            'nb_place' => $salle->getNbPlaces(),
         ]);
-        return $film;
+        return $salle;
     }
-    public function nvFilm(Film $film) {
+    public function nvSalle(Salle $salle) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare('INSERT INTO film (titre, description, genre, duree, affiche) VALUES (:titre, :description, :genre, :duree, :affiche)');
+        $req = $database->prepare('INSERT INTO salle (numero, nb_place) VALUES (:numero, :nb_place)');
         $req->execute([
-            'titre' => $film->getTitre(),
-            'description' => $film->getDescription(),
-            'genre' => $film->getGenre(),
-            'duree' => $film->getDuree(),
-            'affiche' => $film->getAffiche()
+            'numero' => $salle->getNumero(),
+            'nb_place' => $salle->getNbPlaces(),
         ]);
-        return $film;
+        return $salle;
     }
 }

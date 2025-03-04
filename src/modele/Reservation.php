@@ -3,19 +3,19 @@
 class Reservation
 {
     private $idReservation;
-    private $idFilm;
     private $idUser;
-    private $nbPlaces;
+    private $idSeance;
 
     public function __construct(array $donnees)
     {
         $this->hydrate($donnees);
     }
 
-    private function hydrate(array $donnees) {
+    private function hydrate(array $donnees)
+    {
         foreach ($donnees as $key => $value) {
             // On récupère le nom du setter correspondant à l'attribut
-            $method = 'set'.ucfirst($key);
+            $method = 'set' . ucfirst($key);
 
             // Si le setter correspondant existe.
             if (method_exists($this, $method)) {
@@ -44,22 +44,6 @@ class Reservation
     /**
      * @return mixed
      */
-    public function getIdFilm()
-    {
-        return $this->idFilm;
-    }
-
-    /**
-     * @param mixed $idFilm
-     */
-    public function setIdFilm($idFilm)
-    {
-        $this->idFilm = $idFilm;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getIdUser()
     {
         return $this->idUser;
@@ -76,17 +60,17 @@ class Reservation
     /**
      * @return mixed
      */
-    public function getNbPlaces()
+    public function getIdSeance()
     {
-        return $this->nbPlaces;
+        return $this->idSeance;
     }
 
     /**
-     * @param mixed $nbPlaces
+     * @param mixed $idSeance
      */
-    public function setNbPlaces($nbPlaces)
+    public function setIdSeance($idSeance)
     {
-        $this->nbPlaces = $nbPlaces;
+        $this->idSeance = $idSeance;
     }
 
 }

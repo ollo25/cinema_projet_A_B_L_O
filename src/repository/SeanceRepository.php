@@ -27,8 +27,9 @@ class SeanceRepository
     public function nvSeance(Seance $seance) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare('INSERT INTO seance (id_film, date, heure_debut,heure_fin,id_salle,place_dispo) VALUES (:id_film,:date,:heure_debut,:heure_fin,:id_salle,:place_dispo)');
+        $req = $database->prepare('INSERT INTO seance (libelle,id_film, date, heure_debut,heure_fin,id_salle,place_dispo) VALUES (:libelle,:id_film,:date,:heure_debut,:heure_fin,:id_salle,:place_dispo)');
         $req->execute([
+            'libelle'=> $seance->getLbelle(),
             'id_film' => $seance->getIdFilm(),
             'date' => $seance->getDate(),
             'heure_debut' => $seance->getHeureDebut(),
@@ -103,6 +104,26 @@ class SeanceRepository
             'id_salle' => $seance->getIdSalle()
         ]);
         return $seance;
+    }
+    public function recupererSeanceLierASFilm($id_film) {
+        $bdd = new Bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare("SELECT s.id_seance, s.date, s.heure_debut, s.heure_fin FROM seance AS s WHERE s.id_film = :id_film;");
+
+        $req->execute(array('id_film' => $id_film));
+        $seanceBdd = $req->fetchAll();
+
+        $seances = [];
+
+        foreach ($seanceBdd as $seancesBdd) {
+            $seances[] = new Seance([
+                "idSeance" => $seancesBdd['id_seance'],
+                "date" => $seancesBdd['date'],
+                "heureDebut" => $seancesBdd['heure_debut'],
+                "heureFin" => $seancesBdd['heure_fin'],
+            ]);
+        }
+        return $seances;
     }
 
 

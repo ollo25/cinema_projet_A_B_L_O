@@ -1,4 +1,10 @@
-
+<?php
+require_once "src/bdd/Bdd.php";
+require_once "src/modele/Film.php";
+require_once "src/repository/FilmRepository.php";
+$filmRepository = new FilmRepository();
+$catalogue= $filmRepository->recupererFilms();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,23 +79,36 @@ if(isset($_GET['parametre'])){
 </nav>
 <!-- Masthead-->
 <header class="masthead">
-    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-        <div class="d-flex justify-content-center">
-            <div class="text-center">
-                <h1>CINEMAX</h1>
-                <br>
-                <br>
-                <a class="btn btn-primary" href="vue/pageCatalogue.php">Reservation</a>
-            </div>
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center" style="padding-top: 80px;"> <!-- Ajustement du titre -->
+        <div class="text-center">
+            <h1>CINEMAX</h1>
         </div>
     </div>
 </header>
+
 <!-- About-->
 <!-- Projects-->
 <!-- Signup-->
 <!-- Contact-->
 <!-- Footer-->
-<footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
+<div class="container mt-5">
+    <div class="row">
+        <?php foreach($catalogue as $film){ ?>
+            <div class="col-md-2 mb-4">
+                <div class="card">
+                    <img src="<?=$film->getAffiche()?>" class="card-img-top" alt="Affiche de <?=$film->getTitre()?>">
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><?=$film->getTitre()?></h5>
+                        <a href="vue/reservation.php?id_film=<?=$film->getIdFilm()?>" class="btn btn-primary">Réserver</a>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+
+
+<footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5"></div></footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

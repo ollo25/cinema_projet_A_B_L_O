@@ -185,7 +185,15 @@ address {
   font-style: normal;
   line-height: inherit;
 }
+.masthead {
+  padding-top: 80px; /* Ajustement du titre */
+}
 
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
 ol,
 ul {
   padding-left: 2rem;

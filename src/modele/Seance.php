@@ -3,6 +3,23 @@
 class Seance
 {
     private $idSeance;
+    private $lbelle;
+
+    /**
+     * @return mixed
+     */
+    public function getLbelle()
+    {
+        return $this->lbelle;
+    }
+
+    /**
+     * @param mixed $lbelle
+     */
+    public function setLbelle($lbelle)
+    {
+        $this->lbelle = $lbelle;
+    }
     private $idFilm;
     private $date;
     private $heureDebut;
