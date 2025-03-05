@@ -16,10 +16,7 @@
 </head>
 <body id="page-top">
 <?php session_start();
-if(!isset($_SESSION['connexionAdmin'])){
-    header('location: ../index.php?parametre=fakeAdmin');
-}
-elseif (!$_SESSION['connexionAdmin']){
+if (!$_SESSION['connexionAdmin']){
     header('location: ../index.php?parametre=fakeAdmin');
 }
 ?>
@@ -39,6 +36,9 @@ elseif (!$_SESSION['connexionAdmin']){
         <div class="d-flex justify-content-center">
             <div class="text-center">
                 <h1>CINEMAX ADMIN post</h1>
+                <br>
+                <br>
+                <a class="btn btn-primary" href="../index.php">Retour Index</a>
                 <br>
                 <br>
                 <a class="btn btn-primary" href="listeUsers.php">Gestion Utilisateurs</a>

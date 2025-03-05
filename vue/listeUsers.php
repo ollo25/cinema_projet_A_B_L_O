@@ -4,9 +4,7 @@ require_once "../src/modele/User.php";
 require_once "../src/repository/UserRepository.php";
 
 session_start();
-if (!isset($_SESSION['connexionAdmin'])) {
-    header('location: ../index.php?parametre=fakeAdmin');
-} elseif (!$_SESSION['connexionAdmin']) {
+if (!$_SESSION['connexionAdmin']) {
     header('location: ../index.php?parametre=fakeAdmin');
 }
 

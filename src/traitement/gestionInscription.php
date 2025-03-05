@@ -2,6 +2,7 @@
 require_once "../bdd/Bdd.php";
 require_once"../modele/User.php";
 require_once"../repository/UserRepository.php";
+
 if (!empty($_POST["email"]) &&
     !empty($_POST["nom"]) &&
     !empty($_POST["prenom"]) &&
@@ -27,14 +28,27 @@ if (!empty($_POST["email"]) &&
             "mdp" => $hashpassword,
             "role"=> $role
         ]);
-        $user = $userRepository->inscription($user);
+            $verif=$userRepository->verifDoublonEmail($user);
+        if ($verif) {
+            header("Location: ../../vue/inscription.php?parametre=doublon");
+        }else{
+            $user = $userRepository->inscription($user);
 
-        $_SESSION["email"] = $_POST["email"];
-        $_SESSION["mdp"] = $_POST["mdp"];
-        $_SESSION["role"] = $role;
-        $_SESSION["nom"] = $_POST["nom"];
-        $_SESSION["prenom"] = $_POST["prenom"];
-        header("Location: ../../index.php?parametre=inscrit");
+            $_SESSION["email"] = $_POST["email"];
+            $_SESSION["mdp"] = $_POST["mdp"];
+            $_SESSION["role"] = $role;
+            $_SESSION["nom"] = $_POST["nom"];
+            $_SESSION["prenom"] = $_POST["prenom"];
+
+            var_dump($user);
+            if ($user->getRole() == "user") {
+                $_SESSION["connexion"] = true;
+                header("Location: ../../index.php");
+            }
+
+            header("Location: ../../index.php?parametre=inscrit");
+        }
+
     } else {
          header("Location: ../../vue/inscription.php?parametre=mdp");
     }

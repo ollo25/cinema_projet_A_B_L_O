@@ -23,9 +23,12 @@ if(isset($_GET['parametre'])){
         $pop = new PopUp();
         $pop->showPopup("Les mots de passes ne correspondent pas");
     }
-    if($_GET['parametre']=="champsVides"){
+    else if($_GET['parametre']=="champsVides"){
         $pop = new PopUp();
         $pop->showPopup("Veuillez remplir tout les champs");
+    }    else if($_GET['parametre']=="doublon"){
+        $pop = new PopUp();
+        $pop->showPopup("Email déjà existant");
     }
 }
 

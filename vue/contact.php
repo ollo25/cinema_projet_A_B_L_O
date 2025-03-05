@@ -18,6 +18,10 @@
 </head>
 <body id="page-top">
 <?php
+session_start();
+if (!$_SESSION['connexion']) {
+    header('location: ../index.php?parametre=fakeAdmin');
+}
 require_once 'PopUp.php';
 if(isset($_GET['parametre'])){
     if($_GET['parametre']=="msgEnvoye"){

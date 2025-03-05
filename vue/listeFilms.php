@@ -6,9 +6,7 @@
 
 <?php
 session_start();
-if (!isset($_SESSION['connexionAdmin'])) {
-    header('location: ../index.php?parametre=fakeAdmin');
-} elseif (!$_SESSION['connexionAdmin']) {
+if (!$_SESSION['connexionAdmin']) {
     header('location: ../index.php?parametre=fakeAdmin');
 }
 

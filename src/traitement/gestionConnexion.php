@@ -18,11 +18,12 @@ else{
     if(!empty($user->getIdUser())){
         if(password_verify($_POST['mdpCo'],$user->getMdp())){
             if($user->getRole() == "admin"){
+                $_SESSION["connexion"] = true;
                 $_SESSION["connexionAdmin"] = true;
                 header("Location: ../../vue/indexADMIN.php");
             }else{
-
-                header("Location: ../../vue/pageCatalogue.php");
+                $_SESSION["connexion"] = true;
+                header("Location: ../../index.php");
             }
         }
         else{

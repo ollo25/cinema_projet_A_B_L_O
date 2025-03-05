@@ -4,9 +4,7 @@ require_once "../src/bdd/Bdd.php";
 require_once "../src/modele/Film.php";
 require_once "../src/repository/FilmRepository.php";
 session_start();
-if (!isset($_SESSION['connexionAdmin'])) {
-    header('location: ../index.php?parametre=fakeAdmin');
-} elseif (!$_SESSION['connexionAdmin']) {
+if (!$_SESSION['connexionAdmin']) {
     header('location: ../index.php?parametre=fakeAdmin');
 }
 

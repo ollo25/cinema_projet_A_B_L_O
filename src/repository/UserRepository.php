@@ -76,4 +76,21 @@ class UserRepository{
         ));
         return $user;
     }
+    public function verifDoublonEmail( $user)
+    {
+        $bdd = new Bdd();
+        $datebase = $bdd->getBdd();
+        $req = $datebase->prepare('SELECT email FROM user WHERE email=:email');
+        $req->execute(array(
+            "email"=>$user->getEmail()
+        ));
+        $result = $req->fetch();
+        var_dump($result);
+        if($result){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
