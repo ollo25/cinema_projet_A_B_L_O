@@ -42,7 +42,7 @@ class SeanceRepository
     public function recupererFilmTitreLierASeance($id_seance) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare("SELECT f.titre FROM film f WHERE f.id_film = (SELECT s.id_film FROM seance s WHERE s.id_seance = :id_seance)");
+        $req = $database->prepare("SELECT f.titre FROM film f WHERE f.id_film = (SELECT s.ref_film FROM seance s WHERE s.id_seance = :id_seance)");
 
         $req->execute(array('id_seance' => $id_seance));
         $filmBdd = $req->fetch();
@@ -54,7 +54,7 @@ class SeanceRepository
     public function recupererSalleNumLierASeance($id_seance) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare("SELECT sa.numero FROM salle sa WHERE sa.id_salle = (SELECT s.id_salle FROM seance s WHERE s.id_seance = :id_seance)");
+        $req = $database->prepare("SELECT sa.numero FROM salle sa WHERE sa.id_salle = (SELECT s.ref_salle FROM seance s WHERE s.id_seance = :id_seance)");
 
         $req->execute(array('id_seance' => $id_seance));
         $salleBdd = $req->fetch();
@@ -108,7 +108,7 @@ class SeanceRepository
     public function recupererSeanceLierASFilm($id_film) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare("SELECT s.id_seance, s.date, s.heure_debut, s.heure_fin FROM seance AS s WHERE s.id_film = :id_film;");
+        $req = $database->prepare("SELECT id_seance, date, heure_debut, heure_fin FROM seance AS s WHERE s.id_film = :id_film;");
 
         $req->execute(array('id_film' => $id_film));
         $seanceBdd = $req->fetchAll();
