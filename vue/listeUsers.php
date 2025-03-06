@@ -25,6 +25,7 @@ $listeUser=$user->listeUser();
 
 </head>
 <body id="page-top">
+
 <?php require_once 'PopUp.php';
 if(isset($_GET['parametre'])){
     if($_GET['parametre']=="modificationReussie"){
@@ -42,7 +43,7 @@ if(isset($_GET['parametre'])){
 
 } ?>
 <!-- Navigation-->
-<a href="../index.php">Retour Index</a>
+<a class="navbar-brand" href="indexADMIN.php"> index Admin </a>
 <!-- Masthead-->
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">

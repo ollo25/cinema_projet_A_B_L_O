@@ -25,20 +25,16 @@ elseif (!$_SESSION['connexionAdmin']){
 ?>
 
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-    </div>
-</nav>
+
+        <a class="navbar-brand" href="../index.php?erreur=1"> Accueil </a>
+
+
 <!-- Masthead-->
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h1>CINEMAX ADMIN post</h1>
+                <h1>CINEMAX ADMIN </h1>
                 <br>
                 <br>
                 <a class="btn btn-primary" href="listeUsers.php">Gestion Utilisateurs</a>
