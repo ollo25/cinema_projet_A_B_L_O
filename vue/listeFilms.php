@@ -81,11 +81,11 @@ $listeFilm=$film->recupererFilms();
                         <?php endforeach; ?>
                     </select>
                     <br>
-                    <button name="button" value="nvFilm" class="btn btn-primary" style="margin-top: 10px;" type="submit">Enregistrer un nouveau film</button>
                     <button name="button" value="suppr" class="btn btn-primary" style="margin-top: 10px;" type="submit">Supprimer</button>
                     <button name="button" value="modifier" class="btn btn-primary" style="margin-top: 10px;" type="submit">Modifier le film</button>
-
                 </form>
+                <a href="nouveauFilmAdmin.php">Enregistrer un nouveau film</a>
+
             </div>
         </div>
     </div>

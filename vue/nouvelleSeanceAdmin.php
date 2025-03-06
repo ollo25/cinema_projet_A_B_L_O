@@ -31,7 +31,6 @@ if (!$_SESSION['connexionAdmin']) {
 
 </head>
 <body id="page-top">
-PAGE NON FONCTIONNELLE POUR L'INSTANT
 <?php require_once 'PopUp.php';
 if(isset($_GET['parametre'])){
     if($_GET['parametre']=="suprresionReussie"){

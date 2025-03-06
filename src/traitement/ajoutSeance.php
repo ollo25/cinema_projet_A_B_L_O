@@ -9,12 +9,12 @@ $salleRepository = new SalleRepository();
 var_dump($_POST);
 if(!(empty($_POST['idFilmSaisi'])&& empty($_POST['dateNvSeance'])&& empty($_POST['heureDNvSeance'])&& empty($_POST['heureFNvSeance'])&& empty($_POST['salleNvSeance']))) {
     $seance = new Seance([
-        'idFilm' => $_POST['idFilmSaisi'],
+        'refFilm' => $_POST['idFilmSaisi'],
         'date' => $_POST['dateNvSeance'],
         'heureDebut' => $_POST['heureDNvSeance'],
         'heureFin' => $_POST['heureFNvSeance'],
-        'idSalle' => $_POST['idSalleSaisie'],
-        'placeDispo' => $salleRepository->recupererNbPlacesLierASalle($_POST['idSalleSaisie']),
+        'refSalle' => $_POST['idSalleSaisie'],
+        'placesDispo' => $salleRepository->recupererNbPlacesLierASalle($_POST['idSalleSaisie']),
     ]);
     var_dump($seance);
     $seanceRepository = new SeanceRepository();

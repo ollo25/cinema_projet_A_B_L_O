@@ -64,7 +64,7 @@ $listeSeance=$seance->recupererSeance();
                             <td><?= ($listeSeances->getDate()) ?></td>
                             <td><?= ($listeSeances->getHeureDebut()) ?></td>
                             <td><?= ($listeSeances->getHeureFin() )?></td>
-                            <td><?= ($listeSeances->getPlaceDispo() )?></td>
+                            <td><?= ($listeSeances->getPlacesDispo() )?></td>
 
                         </tr>
                     <?php endforeach; ?>

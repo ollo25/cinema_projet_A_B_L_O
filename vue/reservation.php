@@ -2,6 +2,8 @@
 require_once "../src/bdd/Bdd.php";
 require_once "../src/modele/Seance.php";
 require_once "../src/repository/SeanceRepository.php";
+require_once "../src/repository/FilmRepository.php";
+require_once "../src/modele/Film.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,50 +44,35 @@ if(isset($_GET['parametre'])){
 }
 
 ?>
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-
-
-            <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-                <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                    <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    </div>
-        </div>
-</nav>
-
-
-                   <nav class="navbar" style="background-color: #e3f2fd;">
-
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.php">Retour</a></li>
-
-
-                </ul>
+<a href="../index.php"> Retour </a>
 
 
 
-</nav>
+
 
 <!-- Masthead-->
 <header class="masthead">
 
-    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center" style="padding-top: 80px;"> <!-- Ajustement du titre -->
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center" style="padding-top: 80px;">
+        <?php
+        $modeleFilm= new Film([
+                'idFilm'=>$_GET['id_film'],
+        ]);
+        $filmRepo = new FilmRepository();
+        $film = $filmRepo->recupererInfoUniqueFilm($modeleFilm);
+
+        ?>
         <div class="reservation container">
             <br>
 
             <div class="h4 pb-2 mb-4 text-danger border-bottom border-black text-center">
-               <strong><font color="black">Réserver</font></strong>
+               <strong><font color="black"><?=$film->getTitre()?></font></strong> <br>
+                <font color="black"><?=$film->getDescription()?> <br></font>
+                Durée : <?=$film->getDuree()?> | Genre : <?=$film->getGenre()?><br>
             </div>
 
             <?php
+
             $seanceRepo = new SeanceRepository();
             $seanceLierAuFilm = $seanceRepo->recupererSeanceLierASFilm($_GET['id_film']);
 
