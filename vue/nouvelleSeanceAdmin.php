@@ -15,9 +15,7 @@ $salle=new SalleRepository();
 $listeSalle=$salle->recupererSalle();
 
 session_start();
-if (!isset($_SESSION['connexionAdmin'])) {
-    header('location: ../index.php?parametre=fakeAdmin');
-} elseif (!$_SESSION['connexionAdmin']) {
+if (!$_SESSION['connexionAdmin']) {
     header('location: ../index.php?parametre=fakeAdmin');
 }
 
@@ -33,7 +31,6 @@ if (!isset($_SESSION['connexionAdmin'])) {
 
 </head>
 <body id="page-top">
-PAGE NON FONCTIONNELLE POUR L'INSTANT
 <?php require_once 'PopUp.php';
 if(isset($_GET['parametre'])){
     if($_GET['parametre']=="suprresionReussie"){

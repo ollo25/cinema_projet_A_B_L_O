@@ -6,9 +6,7 @@
 <a class="navbar-brand" href="indexADMIN.php"> index Admin </a>
 <?php
 session_start();
-if (!isset($_SESSION['connexionAdmin'])) {
-    header('location: ../index.php?parametre=fakeAdmin');
-} elseif (!$_SESSION['connexionAdmin']) {
+if (!$_SESSION['connexionAdmin']) {
     header('location: ../index.php?parametre=fakeAdmin');
 }
 

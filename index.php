@@ -60,20 +60,28 @@ if(isset($_GET['parametre'])){
                 session_destroy();
                 $_SESSION=[];
                 header("Location: index.php");
-            }
+            } ?>
 
-            if ($_SESSION['connexion'] === true) { ?>
+            <?php if ($_SESSION['connexion'] === true) { ?>
                 <ul class="navbar-nav ms-auto">
+                    <?php if(isset($_SESSION['connexionAdmin'])){?>
+                        <?php if($_SESSION['connexionAdmin'] === true) { ?>
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item"><a class="nav-link" href="vue/indexADMIN.php">Index - ADMIN</a></li>
+                            </ul>
+                        <?php } ?>
+                    <?php }?>
                     <li class="nav-item"><a class="nav-link" href="index.php?deco=true">Déconnexion</a></li>
                     <li class="nav-item"><a class="nav-link" href="vue/contact.php">Contact</a></li>
                 </ul>
-            <?php } else { ?>
+
+            <?php }else { ?>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="vue/connexion.php">Connexion</a></li>
                     <li class="nav-item"><a class="nav-link" href="vue/inscription.php">Inscription</a></li>
                     <li class="nav-item"><a class="nav-link" href="vue/contact.php">Contact</a></li>
                 </ul>
-            <?php } ?>
+            <?php } ;?>
         </div>
     </div>
 </nav>

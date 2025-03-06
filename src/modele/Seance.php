@@ -3,29 +3,12 @@
 class Seance
 {
     private $idSeance;
-    private $lbelle;
-
-    /**
-     * @return mixed
-     */
-    public function getLbelle()
-    {
-        return $this->lbelle;
-    }
-
-    /**
-     * @param mixed $lbelle
-     */
-    public function setLbelle($lbelle)
-    {
-        $this->lbelle = $lbelle;
-    }
-    private $idFilm;
+    private $refFilm;
     private $date;
     private $heureDebut;
     private $heureFin;
-    private $idSalle;
-    private $placeDispo;
+    private $refSalle;
+    private $placesDispo;
 
     /**
      * @return mixed
@@ -46,17 +29,17 @@ class Seance
     /**
      * @return mixed
      */
-    public function getIdFilm()
+    public function getRefFilm()
     {
-        return $this->idFilm;
+        return $this->refFilm;
     }
 
     /**
-     * @param mixed $idFilm
+     * @param mixed $refFilm
      */
-    public function setIdFilm($idFilm)
+    public function setRefFilm($refFilm)
     {
-        $this->idFilm = $idFilm;
+        $this->refFilm = $refFilm;
     }
 
     /**
@@ -110,33 +93,33 @@ class Seance
     /**
      * @return mixed
      */
-    public function getIdSalle()
+    public function getRefSalle()
     {
-        return $this->idSalle;
+        return $this->refSalle;
     }
 
     /**
-     * @param mixed $idSalle
+     * @param mixed $refSalle
      */
-    public function setIdSalle($idSalle)
+    public function setRefSalle($refSalle)
     {
-        $this->idSalle = $idSalle;
+        $this->refSalle = $refSalle;
     }
 
     /**
      * @return mixed
      */
-    public function getPlaceDispo()
+    public function getPlacesDispo()
     {
-        return $this->placeDispo;
+        return $this->placesDispo;
     }
 
     /**
-     * @param mixed $placeDispo
+     * @param mixed $placesDispo
      */
-    public function setPlaceDispo($placeDispo)
+    public function setPlacesDispo($placesDispo)
     {
-        $this->placeDispo = $placeDispo;
+        $this->placesDispo = $placesDispo;
     }
 
     public function __construct(array $donnees)

@@ -10,7 +10,7 @@ class SalleRepository{
         foreach($sallesBdd as $salleBdd){
             $salle[] = new Salle([
                 'idSalle' => $salleBdd['id_salle'],
-                'nbPlaces' => $salleBdd['nb_place'],
+                'nbPlaces' => $salleBdd['nb_places'],
                 'numero' => $salleBdd['numero'],
             ]);
         }
@@ -19,11 +19,11 @@ class SalleRepository{
     public function recupererNbPlacesLierASalle($id_salle) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare("SELECT nb_place FROM salle WHERE id_salle = :id_salle");
+        $req = $database->prepare("SELECT nb_places FROM salle WHERE id_salle = :id_salle");
 
         $req->execute(array('id_salle' => $id_salle));
         $salleBdd = $req->fetch();
-        $salleNbPlaces = $salleBdd['nb_place'];
+        $salleNbPlaces = $salleBdd['nb_places'];
 
 
         return $salleNbPlaces;
@@ -65,10 +65,10 @@ class SalleRepository{
     public function nvSalle(Salle $salle) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare('INSERT INTO salle (numero, nb_place) VALUES (:numero, :nb_place)');
+        $req = $database->prepare('INSERT INTO salle (numero, nb_places) VALUES (:numero, :nb_places)');
         $req->execute([
             'numero' => $salle->getNumero(),
-            'nb_place' => $salle->getNbPlaces(),
+            'nb_places' => $salle->getNbPlaces(),
         ]);
         return $salle;
     }

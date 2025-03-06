@@ -6,9 +6,7 @@
 <a class="navbar-brand" href="indexADMIN.php"> index Admin </a>
 <?php
 session_start();
-if (!isset($_SESSION['connexionAdmin'])) {
-    header('location: ../index.php?parametre=fakeAdmin');
-} elseif (!$_SESSION['connexionAdmin']) {
+if (!$_SESSION['connexionAdmin']) {
     header('location: ../index.php?parametre=fakeAdmin');
 }
 
@@ -66,7 +64,7 @@ $listeSeance=$seance->recupererSeance();
                             <td><?= ($listeSeances->getDate()) ?></td>
                             <td><?= ($listeSeances->getHeureDebut()) ?></td>
                             <td><?= ($listeSeances->getHeureFin() )?></td>
-                            <td><?= ($listeSeances->getPlaceDispo() )?></td>
+                            <td><?= ($listeSeances->getPlacesDispo() )?></td>
 
                         </tr>
                     <?php endforeach; ?>

@@ -3,13 +3,14 @@
 class Reservation
 {
     private $idReservation;
-    private $idUser;
-    private $idSeance;
+    private $refUser;
+    private $refSeance;
 
     public function __construct(array $donnees)
     {
         $this->hydrate($donnees);
     }
+
 
     private function hydrate(array $donnees)
     {
@@ -44,33 +45,35 @@ class Reservation
     /**
      * @return mixed
      */
-    public function getIdUser()
+    public function getRefUser()
     {
-        return $this->idUser;
+        return $this->refUser;
     }
 
     /**
-     * @param mixed $idUser
+     * @param mixed $refUser
      */
-    public function setIdUser($idUser)
+    public function setRefUser($refUser)
     {
-        $this->idUser = $idUser;
+        $this->refUser = $refUser;
     }
 
     /**
      * @return mixed
      */
-    public function getIdSeance()
+    public function getRefSeance()
     {
-        return $this->idSeance;
+        return $this->refSeance;
     }
 
     /**
-     * @param mixed $idSeance
+     * @param mixed $refSeance
      */
-    public function setIdSeance($idSeance)
+    public function setRefSeance($refSeance)
     {
-        $this->idSeance = $idSeance;
+        $this->refSeance = $refSeance;
     }
+
+
 
 }
