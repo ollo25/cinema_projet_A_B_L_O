@@ -634,7 +634,39 @@ progress {
     font-size: 0.875em;
     color: #6c757d;
 }
+.reservation-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
+/* Style des en-têtes */
+.reservation-table th {
+    background-color: #333;  /* Couleur sombre */
+    color: white;
+    font-weight: bold;
+    padding: 14px;
+    border: 2px solid #555; /* Délimitation plus marquée */
+    width: auto;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne si nécessaire */
+    text-align: center;
+}
+
+/* Style des cellules */
+.reservation-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd; /* Délimitation entre les valeurs */
+}
+
+/* Couleur au survol */
+.reservation-table tr:hover {
+    background-color: #f0f0f0;
+}
 .container,
 .container-fluid,
 .container-xxl,
@@ -11075,7 +11107,7 @@ body {
     height: auto;
     min-height: 35rem;
     padding: 15rem 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../img/bg-masthead.jpg") no-repeat scroll center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../img/imgcinema.jpg") no-repeat scroll center;
     background-size: cover;
 }
 .masthead h1, .masthead .h1 {
@@ -11229,7 +11261,6 @@ button:hover {
     border-color: #000000;
     border-width: 5px;
     background-color: #ffffffff;
-    width: 50%;
     margin: auto;
     box-shadow: 0 4px 8px rgb(9, 9, 9);
 color: #000000;

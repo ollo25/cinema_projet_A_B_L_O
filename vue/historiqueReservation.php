@@ -1,9 +1,6 @@
 <?php
 require_once "../src/bdd/Bdd.php";
-require_once "../src/modele/Seance.php";
-require_once "../src/repository/SeanceRepository.php";
-require_once "../src/repository/FilmRepository.php";
-require_once "../src/modele/Film.php";
+require_once "../src/repository/ReservationRepository.php";
 session_start();
 if(isset($_SESSION["connexion"])){
     if(!$_SESSION["connexion"]){
@@ -53,52 +50,43 @@ else{header("Location: ../index.php?parametre=login");}
 
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center" style="padding-top: 80px;">
         <?php
-        $modeleFilm= new Film([
-                'idFilm'=>$_GET['id_film'],
-        ]);
-        $filmRepo = new FilmRepository();
-        $film = $filmRepo->recupererInfoUniqueFilm($modeleFilm);
-
+        $reservationRepo = new ReservationRepository();
+        $reservation = $reservationRepo->recupererReservationsselonUser($_SESSION["id_user"]);
         ?>
-        <div class="reservation container">
-            <br>
 
-            <div class="h4 pb-2 mb-4 text-danger border-bottom border-black text-center">
-               <strong><font color="black"><?=$film->getTitre()?></font></strong> <br>
-                <font color="black"><?=$film->getDescription()?> <br></font>
-                Durée : <?=$film->getDuree()?> | Genre : <?=$film->getGenre()?><br>
-            </div>
+        <div class="reservation container ">
+            <?php if(empty($reservation)){?>
+                <div class="text-center">Vous n'avez réservé aucune séance.</div>
+            <?php }else{ ?>
+            <table class="reservation-table" border="2">
+                <tr>
+                    <th>Film</th>
+                    <th>Date</th>
+                    <th>Heure de début de la séance</th>
+                    <th>Date de réservation</th>
+                    <th>Annuler la réservation</th>
 
-            <?php
+                </tr>
 
-            $seanceRepo = new SeanceRepository();
-            $seanceLierAuFilm = $seanceRepo->recupererSeanceLierAFilm($_GET['id_film']);
-
-            $compteurDeSeance=0;
-            foreach ($seanceLierAuFilm as $seance) { ?>
-            <?php if (new DateTime($seance->getDate()) > new DateTime() || $seance->getPlacesDispo() < 1) {
-                $compteurDeSeance++;
-                ?>
-                <form method="post" action="../src/traitement/gestionReservation.php">
-                    <button type="submit" name="idSeanceReserve" value="<?= $seance->getIdSeance() ?>">
-                        <?=$seance->getDate()?>
-                        <br>
-                        <?=$seance->getHeureDebut()?> - <?=$seance->getHeureFin()?>
-                        <br>
-                        <?=$seance->getPlacesDispo() ?> places restantes
-                    </button>
-                </form>
-                <br>
-                <?php } ?>
-            <?php }
-            if($compteurDeSeance==0){?>
-                <div class="text-center">Il n'y a pas de séance programmée pour ce film.</div>
+                <?php
+                foreach ($reservation as $reservations):?>
+                    <tr>
+                        <td><?= ($reservations['titreFilm'])?></td>
+                        <td><?= ($reservations['dateSeance']) ?></td>
+                        <td><?= ($reservations['heureDebut']) ?></td>
+                        <td>Reservation datant du <?= ($reservations['dateReservation']) ?></td>
+                        <td><a href="../src/traitement/gestionReservation.php?idReservation=<?= ($reservations['idReservation']) ?>">
+                                <button>Annuler</button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
             <?php }?>
-            <br>
         </div>
-        </div>
+    </div>
 
-        </div>
+    </div>
     <br>
 </header>
 

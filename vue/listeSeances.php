@@ -58,13 +58,13 @@ $listeSeance=$seance->recupererSeance();
                     /** @var $listeSeances $ */
                     foreach ($listeSeance as $listeSeances): ?>
                         <tr>
-                            <td><?= ($listeSeances->getIdSeance()) ?></td>
-                            <td><?= ($seance->recupererFilmTitreLierASeance($listeSeances->getIdSeance())) ?></td>
-                            <td><?= ($seance->recupererSalleNumLierASeance($listeSeances->getIdSeance())) ?></td>
-                            <td><?= ($listeSeances->getDate()) ?></td>
-                            <td><?= ($listeSeances->getHeureDebut()) ?></td>
-                            <td><?= ($listeSeances->getHeureFin() )?></td>
-                            <td><?= ($listeSeances->getPlacesDispo() )?></td>
+                            <td><?=$listeSeances['idSeance']?></td>
+                            <td><?=$listeSeances['titreFilm']?></td>
+                            <td><?=$listeSeances['numero']?></td>
+                            <td><?=$listeSeances['date']?></td>
+                            <td><?=$listeSeances['heureDebut']?></td>
+                            <td><?=$listeSeances['heureFin']?></td>
+                            <td><?=$listeSeances['placesDispo']?></td>
 
                         </tr>
                     <?php endforeach; ?>
@@ -77,7 +77,7 @@ $listeSeance=$seance->recupererSeance();
                     <select name="idSeanceSelection" required>
                         <?php
                         foreach ($listeSeance as $listeSeances): ?>
-                            <option value="<?=$listeSeances->getIdSeance()?>"><?=$listeSeances->getIdSeance()?></option>
+                            <option value="<?=$listeSeances['idSeance']?>"><?=$listeSeances['idSeance']?></option>
                         <?php endforeach; ?>
                     </select>
                     <br>

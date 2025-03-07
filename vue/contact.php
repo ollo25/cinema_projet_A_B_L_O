@@ -20,7 +20,7 @@
 <?php
 session_start();
 if (!$_SESSION['connexion']) {
-    header('location: ../index.php?parametre=fakeAdmin');
+    header('location: ../index.php?parametre=login1');
 }
 require_once 'PopUp.php';
 if(isset($_GET['parametre'])){

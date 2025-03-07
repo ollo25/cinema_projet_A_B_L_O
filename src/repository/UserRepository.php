@@ -10,10 +10,9 @@ class UserRepository{
         $utilisateur = $req->fetch();
         if($utilisateur){
             $user->setMdp($utilisateur['mdp']);
-            $user->setNom($utilisateur["nom"]);
             $user->setRole($utilisateur["role"]);
             $user->setIdUser($utilisateur["id_user"]);
-            $user->setPrenom($utilisateur["prenom"]);
+            $user->setEmail($utilisateur["email"]);
         }
         return $user;
     }

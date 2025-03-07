@@ -36,8 +36,7 @@ if(isset($_GET['parametre'])){
 }
 
 $reservation=new ReservationRepository();
-$listeReservation=$reservation->recupererReservations();
-?>
+$listeReservation=$reservation->recupererReservations(); ?>
 
 <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
@@ -48,16 +47,28 @@ $listeReservation=$reservation->recupererReservations();
                 <table border="2">
                     <tr>
                         <td>Id Reservation</td>
-                        <td>Id User</td>
                         <td>Id Seance</td>
+                        <td>Réservé par :</td>
+                        <td>Titre</td>
+                        <td>Date Seance</td>
+                        <td>Heure Debut Seance</td>
+                        <td>Heure Fin Seance</td>
+                        <td>Date de la réservation</td>
+
+
                         </tr>
 
                     <?php
                     foreach ($listeReservation as $listeReservations): ?>
                         <tr>
-                            <td><?=$listeReservations->getIdReservation()?></td>
-                            <td><?=$listeReservations->getIdUser()?></td>
-                            <td><?=$listeReservations->getIdSeance()?></td>
+                            <td><?=$listeReservations['idReservation']?></td>
+                            <td><?=$listeReservations['refSeance']?></td>
+                            <td><?=$listeReservations['email']?></td>
+                            <td><?=$listeReservations['titreFilm']?></td>
+                            <td><?=$listeReservations['dateSeance']?></td>
+                            <td><?=$listeReservations['heureDebut']?></td>
+                            <td><?=$listeReservations['heureFin']?></td>
+                            <td><?=$listeReservations['dateReservation']?></td>
 
                         </tr>
                     <?php endforeach; ?>
@@ -65,19 +76,16 @@ $listeReservation=$reservation->recupererReservations();
                 <br>
                 <h2> Inserer l'ID de le la reservation a modifier / supprimer : </h2>
 
-                <form action="../src/traitement/gestionFilm.php" method="post">
+                <form action="../src/traitement/gestionReservation.php" method="post">
                     <label >Reservation :</label>
-                    <select name="idSaisie" required>
+                    <select name="idSaisieReservation" required>
                         <?php
                         foreach ($listeReservation as $listeReservations): ?>
                             <option value="<?= ($listeReservations['idReservation']) ?>"><?= ($listeReservations['idReservation']) ?></option>
                         <?php endforeach; ?>
                     </select>
                     <br>
-                    <button name="button" value="nvFilm" class="btn btn-primary" style="margin-top: 10px;" type="submit">Enregistrer un nouveau film</button>
                     <button name="button" value="suppr" class="btn btn-primary" style="margin-top: 10px;" type="submit">Supprimer</button>
-                    <button name="button" value="modifier" class="btn btn-primary" style="margin-top: 10px;" type="submit">Modifier le film</button>
-
                 </form>
             </div>
         </div>

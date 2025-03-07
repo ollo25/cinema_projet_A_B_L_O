@@ -6,6 +6,7 @@ class contact
     private $email;
     private $objet;
     private $description;
+    private $date;
 
     public function __construct(array $donnees)
     {
@@ -87,6 +88,22 @@ class contact
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
     }
 
 }

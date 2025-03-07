@@ -34,9 +34,6 @@ if (!$_SESSION['connexionAdmin']){
                 <h1>CINEMAX ADMIN </h1>
                 <br>
                 <br>
-                <a class="btn btn-primary" href="../index.php">Retour Index</a>
-                <br>
-                <br>
                 <a class="btn btn-primary" href="listeUsers.php">Gestion Utilisateurs</a>
                 <br>
                 <br>
@@ -50,6 +47,9 @@ if (!$_SESSION['connexionAdmin']){
                 <br>
                 <br>
                 <a class="btn btn-primary" href="listeSalles.php">Gestion Salles</a>
+                <br>
+                <br>
+                <a class="btn btn-primary" href="listeContacts.php">Gestion Contacts</a>
                 <br>
             </div>
         </div>

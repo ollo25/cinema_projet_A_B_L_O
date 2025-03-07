@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 06 mars 2025 à 11:03
+-- Généré le : ven. 07 mars 2025 à 01:31
 -- Version du serveur : 9.1.0
 -- Version de PHP : 8.3.14
 
@@ -33,8 +33,17 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `email` varchar(255) NOT NULL,
   `objet` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id_contact`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `contact`
+--
+
+INSERT INTO `contact` (`id_contact`, `email`, `objet`, `description`, `date`) VALUES
+(2, 'a@a', 'poulet', 'uoàoààooà', '0000-00-00'),
+(5, 'a@a', 'okokoko', 'okokkoko', '2025-03-07');
 
 -- --------------------------------------------------------
 
@@ -59,7 +68,6 @@ CREATE TABLE IF NOT EXISTS `film` (
 
 INSERT INTO `film` (`id_film`, `titre`, `description`, `genre`, `duree`, `affiche`) VALUES
 (1, 'Inception', 'Dom Cobb est un voleur expérimenté dans l\'art périlleux de l\'extraction : il s\'approprie les secrets les plus précieux d\'une personne en infiltrant son esprit pendant qu\'elle rêve. Cette rare compétence a fait de lui un acteur clé dans l\'univers de l\'espionnage industriel, mais elle l\'a également transformé en fugitif international, lui coûtant tout ce qu\'il a jamais aimé. Aujourd\'hui, on lui offre une chance de rédemption : une dernière mission qui pourrait lui rendre sa vie d\'avant, à condition qu\'il parvienne à l\'impossible, l\'inception. Au lieu de dérober une idée, Cobb et son équipe doivent accomplir l\'inverse : implanter une idée dans l\'esprit d\'un individu.', 'Thriller, Science-fiction', '00:02:28', 'https://tse2.mm.bing.net/th?id=OIP.b8WjJA8J2IJgblXaSliy3QHaLH&w=474&h=474&c=7'),
-(2, 'The Dark Knight : Le Chevalier noir', 'Lorsqu\'une menace connue sous le nom du Joker émerge de son passé mystérieux et déclenche le chaos sur la ville de Gotham, Batman doit faire face à l\'un des plus grands défis psychologiques et physiques pour combattre l\'injustice.', 'Action, Crime, Drame', '00:02:32', 'https://tse2.mm.bing.net/th?id=OIP.SaTyImL0SXgHLEDAY6it6wHaLH&w=474&h=474&c=7'),
 (3, 'Interstellar', 'Dans un futur proche, la Terre est ravagée par des catastrophes naturelles et une agriculture déclinante. Un groupe d\'explorateurs entreprend une mission à travers un trou de ver récemment découvert, voyageant au-delà de notre galaxie pour trouver une nouvelle planète habitable pour l\'humanité.', 'Science-fiction, Aventure, Drame', '00:02:49', 'https://www.themoviedb.org/t/p/original/nCbkOyOMTEwlEV0LtCOvCnwEONA.jpg');
 
 -- --------------------------------------------------------
@@ -73,10 +81,23 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `id_reservation` int NOT NULL AUTO_INCREMENT,
   `ref_user` int NOT NULL,
   `ref_seance` int NOT NULL,
+  `date_reservation` date NOT NULL,
   PRIMARY KEY (`id_reservation`),
   KEY `ref_user` (`ref_user`),
   KEY `ref_seance` (`ref_seance`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `reservation`
+--
+
+INSERT INTO `reservation` (`id_reservation`, `ref_user`, `ref_seance`, `date_reservation`) VALUES
+(3, 1, 3, '2025-03-06'),
+(4, 1, 3, '2025-03-06'),
+(5, 1, 3, '2025-03-06'),
+(6, 1, 3, '2025-03-06'),
+(7, 1, 3, '2025-03-06'),
+(9, 1, 3, '2025-03-07');
 
 -- --------------------------------------------------------
 
@@ -126,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `seance` (
 --
 
 INSERT INTO `seance` (`id_seance`, `ref_film`, `heure_debut`, `heure_fin`, `ref_salle`, `places_dispo`, `date`) VALUES
-(3, 3, '15:00:00', '17:00:00', 1, 250, '2222-09-25');
+(3, 3, '15:00:00', '17:00:00', 2, 241, '2222-09-25');
 
 -- --------------------------------------------------------
 
@@ -144,14 +165,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role` varchar(10) NOT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id_user`, `email`, `nom`, `prenom`, `mdp`, `role`) VALUES
-(1, 'a@a', 'admin', 'admin', '$2y$10$5o6I/qBbxSV8pxqfX81jde0EkZdQaIJrVyx/2VHL.x2jb/NyDxxqG', 'admin');
+(1, 'a@a', 'admin', 'admin', '$2y$10$5o6I/qBbxSV8pxqfX81jde0EkZdQaIJrVyx/2VHL.x2jb/NyDxxqG', 'admin'),
+(2, 'leomnes25@gmail.com', 'OMNES', 'Léo', '$2y$10$EJrb.zpMNTl9Vto8gAJ11..v3Ux5kmynRjb1kYM1nQRDoLFNrjdDq', 'user'),
+(3, 'leomnes25@gmail.co', 'uhhuh@yghyh', 'Meslé', '$2y$10$hZ9M2ppM/QGJvlKYibrcquN767BtMM3WivzF0MQVSwck/cMm2pUNq', 'user'),
+(4, 'ijijjij@yhhyuh', 'uhuh@hyuhuu', 'a', '$2y$10$Uyog/qFOKQIowij2o0OxAe1DsZY6sjcOYfJCvxewXQqn5otxTRoKi', 'user');
 
 --
 -- Contraintes pour les tables déchargées

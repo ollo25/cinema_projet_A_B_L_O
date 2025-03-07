@@ -128,6 +128,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   line-height: 1.2;
 }
 
+
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
@@ -4248,7 +4249,7 @@ textarea.form-control-lg {
   --bs-card-cap-color: ;
   --bs-card-height: ;
   --bs-card-color: ;
-  --bs-card-bg: #fff;
+  --bs-card-bg: #ffffff;
   --bs-card-img-overlay-padding: 1rem;
   --bs-card-group-margin: 0.75rem;
   position: relative;
@@ -4283,6 +4284,26 @@ textarea.form-control-lg {
 .card > .card-header + .list-group,
 .card > .list-group + .card-footer {
   border-top: 0;
+}
+.card {
+  height: 400px; /* Hauteur fixe pour toutes les cartes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-img-top {
+  height: 250px; /* Hauteur fixe pour les images */
+  object-fit: cover; /* Coupe et ajuste l’image pour qu’elle remplisse la boîte */
+  width: 100%; /* Évite les déformations */
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ajuste l'espace */
+  text-align: center;
 }
 
 .card-body {
@@ -4358,7 +4379,7 @@ textarea.form-control-lg {
 .card-img,
 .card-img-top,
 .card-img-bottom {
-  width: 100%;
+  height: 200px;
 }
 
 .card-img,
@@ -11099,6 +11120,7 @@ body {
   max-width: 20rem;
   font-size: 1rem;
 }
+
 @media (min-width: 768px) {
   .masthead h1, .masthead .h1 {
     font-size: 4rem;

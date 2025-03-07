@@ -2,26 +2,55 @@
 
 class SeanceRepository
 {
-
     public function recupererSeance()
     {
         $bdd = new Bdd();
         $datebase = $bdd->getBdd();
-        $req = $datebase->prepare('SELECT * FROM seance');
+
+        $req = $datebase->prepare('SELECT s.id_seance, f.titre,s.date, s.heure_debut,s.heure_fin, sa.numero, s.places_dispo FROM seance s INNER JOIN film f ON s.ref_film = f.id_film INNER JOIN salle sa ON s.ref_salle = sa.id_salle');
+
         $req->execute();
-        $seancesBdd = $req->fetchAll();
-        $seance=[];
-        foreach ($seancesBdd as $seanceBdd) {
-            $seance[] = new Seance([
-                'idSeance' => $seanceBdd['id_seance'],
-                'refFilm' => $seanceBdd['ref_film'],
-                'date' => $seanceBdd['date'],
-                'heureDebut' => $seanceBdd['heure_debut'],
-                'heureFin' => $seanceBdd['heure_fin'],
-                'refSalle' => $seanceBdd['ref_salle'],
-                'placesDispo' => $seanceBdd['places_dispo'],
-            ]);
+        $seanceBdd = $req->fetchAll();
+        $seance = [];
+        foreach ($seanceBdd as $seancesBdd) {
+            $seance[] = [
+                'idSeance' => $seancesBdd['id_seance'],
+                'titreFilm' => $seancesBdd['titre'],
+                'date' => $seancesBdd['date'],
+                'heureDebut' => $seancesBdd['heure_debut'],
+                'heureFin' => $seancesBdd['heure_fin'],
+                'numero' => $seancesBdd['numero'],
+                'placesDispo' => $seancesBdd['places_dispo']
+            ];
         }
+
+        return $seance;
+    }
+    public function recupererInfoUniqueSeance(Seance $seances)
+    {
+        $bdd = new Bdd();
+        $datebase = $bdd->getBdd();
+
+        $req = $datebase->prepare('SELECT s.id_seance,s.ref_salle, f.titre,s.date, s.heure_debut,s.heure_fin, sa.numero, s.places_dispo FROM seance s INNER JOIN film f ON s.ref_film = f.id_film INNER JOIN salle sa ON s.ref_salle = sa.id_salle WHERE id_seance = :id_seance');
+
+        $req->execute([
+            'id_seance' => $seances->getIdSeance()
+        ]);
+        $seanceBdd = $req->fetchAll();
+        $seance = [];
+        foreach ($seanceBdd as $seancesBdd) {
+            $seance[] = [
+                'idSeance' => $seancesBdd['id_seance'],
+                'refSalle' => $seancesBdd['ref_salle'],
+                'titreFilm' => $seancesBdd['titre'],
+                'date' => $seancesBdd['date'],
+                'heureDebut' => $seancesBdd['heure_debut'],
+                'heureFin' => $seancesBdd['heure_fin'],
+                'numero' => $seancesBdd['numero'],
+                'placesDispo' => $seancesBdd['places_dispo']
+            ];
+        }
+
         return $seance;
     }
     public function nvSeance(Seance $seance) {
@@ -38,30 +67,7 @@ class SeanceRepository
         ]);
         return $seance;
     }
-    public function recupererFilmTitreLierASeance($id_seance) {
-        $bdd = new Bdd();
-        $database = $bdd->getBdd();
-        $req = $database->prepare("SELECT f.titre FROM film f WHERE f.id_film = (SELECT s.ref_film FROM seance s WHERE s.id_seance = :id_seance)");
 
-        $req->execute(array('id_seance' => $id_seance));
-        $filmBdd = $req->fetch();
-        $filmTitre = $filmBdd['titre'];
-
-
-        return $filmTitre;
-    }
-    public function recupererSalleNumLierASeance($id_seance) {
-        $bdd = new Bdd();
-        $database = $bdd->getBdd();
-        $req = $database->prepare("SELECT sa.numero FROM salle sa WHERE sa.id_salle = (SELECT s.ref_salle FROM seance s WHERE s.id_seance = :id_seance)");
-
-        $req->execute(array('id_seance' => $id_seance));
-        $salleBdd = $req->fetch();
-        $salleNum = $salleBdd['numero'];
-
-
-        return $salleNum;
-    }
     public function deleteSeance(Seance $seance){
         $bdd = new Bdd();
         $database=$bdd->getBdd();
@@ -71,43 +77,25 @@ class SeanceRepository
         ));
         return $seance;
     }
-    public function recupererInfoUniqueSeance(Seance $seance){
-        $bdd = new Bdd();
-        $database = $bdd->getBdd();
-        $req = $database->prepare('SELECT * FROM seance WHERE id_seance = :id_seance');
-        $req->execute(array(
-            "id_seance" => $seance->getIdSeance()
-        ));
-        $seanceBdd = $req->fetch();
-        return new Seance([
-            'idSeance' => $seanceBdd['id_seance'],
-            'idFilm' => $seanceBdd['id_film'],
-            'date' => $seanceBdd['date'],
-            'heureDebut' => $seanceBdd['heure_debut'],
-            'heureFin' => $seanceBdd['heure_fin'],
-            'idSalle' => $seanceBdd['id_salle'],
-            'placeDispo' => $seanceBdd['place_dispo'],
-        ]);
 
-    }
     public function updateSeance(Seance $seance) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare('UPDATE seance SET id_film = :id_film, date = :date, heure_debut = :heure_debut, heure_fin = :heure_fin, id_salle = :id_salle WHERE id_seance = :id_seance');
+        $req = $database->prepare('UPDATE seance SET ref_film = :ref_film, date = :date, heure_debut = :heure_debut, heure_fin = :heure_fin, ref_salle = :ref_salle WHERE id_seance = :id_seance');
         $seance = $req->execute([
             'id_seance' => $seance->getIdSeance(),
-            'id_film' => $seance->getidFilm(),
+            'ref_film' => $seance->getRefFilm(),
             'date' => $seance->getDate(),
             'heure_debut' => $seance->getheureDebut(),
             'heure_fin' => $seance->getheureFin(),
-            'id_salle' => $seance->getIdSalle()
+            'ref_salle' => $seance->getRefSalle()
         ]);
         return $seance;
     }
-    public function recupererSeanceLierASFilm($ref_film) {
+    public function recupererSeanceLierAFilm($ref_film) {
         $bdd = new Bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare("SELECT id_seance, date, heure_debut, heure_fin FROM seance AS s WHERE s.ref_film = :ref_film;");
+        $req = $database->prepare("SELECT id_seance, date, heure_debut, heure_fin, places_dispo FROM seance AS s WHERE s.ref_film = :ref_film;");
 
         $req->execute(array('ref_film' => $ref_film));
         $seanceBdd = $req->fetchAll();
@@ -120,6 +108,7 @@ class SeanceRepository
                 "date" => $seancesBdd['date'],
                 "heureDebut" => $seancesBdd['heure_debut'],
                 "heureFin" => $seancesBdd['heure_fin'],
+                "placesDispo"=> $seancesBdd['places_dispo'],
             ]);
         }
         return $seances;

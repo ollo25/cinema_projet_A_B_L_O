@@ -41,8 +41,7 @@ if (!empty($_POST["email"]) &&
             $_SESSION["prenom"] = $_POST["prenom"];
 
             var_dump($user);
-            if ($user->getRole() == "user") {
-                $_SESSION["connexion"] = true;
+            if ($user->getRole() == "user") {;
                 header("Location: ../../index.php");
             }
 

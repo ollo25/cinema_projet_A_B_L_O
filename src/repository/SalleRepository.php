@@ -46,7 +46,7 @@ class SalleRepository{
             ));
             $salleBdd = $req->fetch();
             return new Salle([
-                'nbPlaces' => $salleBdd['nb_place'],
+                'nbPlaces' => $salleBdd['nb_places'],
                 'numero' => $salleBdd['numero'],
             ]);
 

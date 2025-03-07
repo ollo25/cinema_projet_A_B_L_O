@@ -14,13 +14,14 @@ else{
     ]);
     $userRepository = new UserRepository();
     $user = $userRepository->connexion($user);
-    var_dump($user);
     if(!empty($user->getIdUser())){
         if(password_verify($_POST['mdpCo'],$user->getMdp())){
+            $_SESSION['id_user'] = $user->getIdUser();
+            $_SESSION['email'] = $user->getEmail();
             if($user->getRole() == "admin"){
                 $_SESSION["connexion"] = true;
                 $_SESSION["connexionAdmin"] = true;
-                header("Location: ../../vue/indexADMIN.php");
+                header("Location: ../../index.php");
             }else{
                 $_SESSION["connexion"] = true;
                 header("Location: ../../index.php");

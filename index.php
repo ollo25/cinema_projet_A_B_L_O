@@ -36,7 +36,23 @@ if(isset($_GET['parametre'])){
     }
     elseif($_GET['parametre']=="fakeAdmin"){
         $pop = new PopUp();
-        $pop->showPopup("TU AS ESSAYE DE M'AVOIR AVEC TON LIEN");
+        $pop->showPopup("Bien essayé");
+    }
+    elseif($_GET['parametre']=="login"){
+        $pop = new PopUp();
+        $pop->showPopup("Veuillez vous connecter avant de reserver !");
+    }
+    elseif($_GET['parametre']=="login1"){
+        $pop = new PopUp();
+        $pop->showPopup("Veuillez vous connecter avant de nous contacter !");
+    }
+    elseif($_GET['parametre']=="reservationReussie"){
+        $pop = new PopUp();
+        $pop->showPopup("Réservation faite!");
+    }
+    if($_GET['parametre']=="msgEnvoye"){
+        $pop = new PopUp();
+        $pop->showPopup("Le message a bien été envoyé");
     }
 }
 
@@ -71,6 +87,8 @@ if(isset($_GET['parametre'])){
                             </ul>
                         <?php } ?>
                     <?php }?>
+
+                    <li class="nav-item"><a class="nav-link" href="vue/historiqueReservation.php">Reservation à venir / passée</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.php?deco=true">Déconnexion</a></li>
                     <li class="nav-item"><a class="nav-link" href="vue/contact.php">Contact</a></li>
                 </ul>
@@ -94,13 +112,8 @@ if(isset($_GET['parametre'])){
     </div>
 </header>
 
-<!-- About-->
-<!-- Projects-->
-<!-- Signup-->
-<!-- Contact-->
-<!-- Footer-->
 <div class="container mt-5">
-    <div class="row">
+    <div class="row d-flex justify-content-center">
         <?php foreach($catalogue as $film){ ?>
             <div class="col-md-2 mb-4">
                 <div class="card">

@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-
-
-
-
 <body>
 <a class="navbar-brand" href="indexADMIN.php"> index Admin </a>
 <?php
@@ -16,8 +9,8 @@ if (!$_SESSION['connexionAdmin']) {
 }
 
 require_once "../src/bdd/Bdd.php";
-require_once "../src/modele/Film.php";
-require_once "../src/repository/FilmRepository.php";
+require_once "../src/modele/Contact.php";
+require_once "../src/repository/ContactRepository.php";
 
 
 require_once 'PopUp.php';
@@ -40,8 +33,8 @@ if(isset($_GET['parametre'])){
     }
 }
 
-$film=new FilmRepository();
-$listeFilm=$film->recupererFilms();
+$contact=new ContactRepository();
+$listeContact=$contact->recupererContacts();
 ?>
 
 <header class="masthead">
@@ -53,42 +46,37 @@ $listeFilm=$film->recupererFilms();
                 <table border="2">
                     <tr>
                         <td>ID</td>
-                        <td>Titre</td>
+                        <td>Email de l'envoyeur</td>
+                        <td>Objet</td>
                         <td>Description</td>
-                        <td>Durée</td>
-                        <td>Genre</td>
-                        <td>Affiche</td>
+                        <td>Date</td>
                     </tr>
 
                     <?php
-                    foreach ($listeFilm as $listeFilms): ?>
+                    foreach ($listeContact as $listeContacts): ?>
                         <tr>
-                            <td><?= ($listeFilms->getIdFilm()) ?></td>
-                            <td><?= ($listeFilms->getTitre()) ?></td>
-                            <td><?= ($listeFilms->getDescription()) ?></td>
-                            <td><?= ($listeFilms->getDuree()) ?></td>
-                            <td><?= ($listeFilms->getGenre()) ?></td>
-                            <td><?= ($listeFilms->getAffiche()) ?></td>
+                            <td><?= ($listeContacts->getIdContact()) ?></td>
+                            <td><?= ($listeContacts->getEmail()) ?></td>
+                            <td><?= ($listeContacts->getObjet()) ?></td>
+                            <td><?= ($listeContacts->getDescription()) ?></td>
+                            <td><?= ($listeContacts->getDate()) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
                 <br>
                 <h2> Inserer l'ID de l'utilisateur a modifier / supprimer : </h2>
 
-                <form action="../src/traitement/gestionFilm.php" method="post">
+                <form action="../src/traitement/gestionContact.php" method="post">
                     <label >Films :</label>
-                    <select name="idSaisie" required>
+                    <select name="idSaisieContact" required>
                         <?php
-                        /** @var User $user */
-                        foreach ($listeFilm as $film): ?>
-                            <option value="<?=$film->getIdFilm()?>"><?=$film->getTitre()?></option>
+                        foreach ($listeContact as $contact): ?>
+                            <option value="<?=$contact->getIdContact()?>"><?=$contact->getIdContact()?></option>
                         <?php endforeach; ?>
                     </select>
                     <br>
                     <button name="button" value="suppr" class="btn btn-primary" style="margin-top: 10px;" type="submit">Supprimer</button>
-                    <button name="button" value="modifier" class="btn btn-primary" style="margin-top: 10px;" type="submit">Modifier le film</button>
                 </form>
-                <a href="nouveauFilmAdmin.php">Enregistrer un nouveau film</a>
 
             </div>
         </div>

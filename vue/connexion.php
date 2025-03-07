@@ -28,6 +28,10 @@ if(isset($_GET['parametre'])){
         $pop = new PopUp();
         $pop->showPopup("Erreur");
     }
+    if($_GET['parametre']=="emailmdpInvalide"){
+        $pop = new PopUp();
+        $pop->showPopup("L'email ou le mot de passe est incorrect");
+    }
 }
 
 ?>

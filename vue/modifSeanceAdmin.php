@@ -7,10 +7,10 @@ require_once "../src/modele/Film.php";
 require_once "../src/repository/FilmRepository.php";
 require_once "../src/modele/Salle.php";
 require_once "../src/repository/SalleRepository.php";
-$film = new FilmRepository();
-$listeFilm=$film->recupererFilms();
-$salle=new SalleRepository();
-$listeSalle=$salle->recupererSalle();
+$idSeance = new FilmRepository();
+$listeFilm=$idSeance->recupererFilms();
+$idSalle=new SalleRepository();
+$listeSalle=$idSalle->recupererSalle();
 session_start();
 if (!$_SESSION['connexionAdmin']) {
     header('location: ../index.php?parametre=fakeAdmin');
@@ -62,35 +62,50 @@ if(isset($_GET['parametre'])){
                 $seance = $seanceRepo->recupererInfoUniqueSeance($seanceModele);
                 ?>
                 <!-- le htmlspecialchars permet de pouvoir mettre des espaces / charactères speciaux dans les placeholders-->
+                <?php
+                $seanceData = isset($seance[0]) ? $seance[0] : [];
+                ?>
+
                 <form action="../src/traitement/modifSeance.php" method="post">
                     <label>Film <br>
                         <select name="filmNvSeance" required>
                             <?php
-                            $film = htmlspecialchars($seance->getIdFilm());
+                            $idSeance = isset($seanceData['idSeance']) ? htmlspecialchars($seanceData['idSeance']) : '';
 
-                            foreach ($listeFilm as $listeFilms): ?>                                      <!--racourci pour if -->
-                                <option value="<?=$listeFilms->getIdFilm()?>"<?=$listeFilms->getIdFilm() == $film ? 'selected' : '' ?>>
-                                    <?=$listeFilms->getTitre()?>
+                            foreach ($listeFilm as $listeFilms): ?>
+                                <option value="<?= $listeFilms->getIdFilm() ?>" <?= ($listeFilms->getIdFilm() == $idSeance) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($listeFilms->getTitre()) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                         <br>
                     </label>
-                    <label>Date <input type="date" value="<?php echo htmlspecialchars($seance->getDate()); ?>" name="dateNvSeance" class="auto-width"></label>
-                    <label>Heure Début <input type="time" value="<?php echo htmlspecialchars($seance->getHeureDebut()); ?>" name="heureDNvSeance" class="auto-width"></label>
-                    <label>Heure Fin <input type="time" value="<?php echo htmlspecialchars($seance->getHeureFin()); ?>" name="heureFNvSeance" class="auto-width"></label>
+
+                    <label>Date <br>
+                        <input type="date" value="<?= isset($seanceData['date']) ? htmlspecialchars($seanceData['date']) : ''; ?>" name="dateNvSeance" class="auto-width">
+                    </label>
+
+                    <label>Heure Début <br>
+                        <input type="time" value="<?= isset($seanceData['heureDebut']) ? htmlspecialchars($seanceData['heureDebut']) : ''; ?>" name="heureDNvSeance" class="auto-width">
+                    </label>
+
+                    <label>Heure Fin <br>
+                        <input type="time" value="<?= isset($seanceData['heureFin']) ? htmlspecialchars($seanceData['heureFin']) : ''; ?>" name="heureFNvSeance" class="auto-width">
+                    </label>
+
                     <label>Salle <br>
                         <select name="salleNvSeance" required>
                             <?php
-                            $salle = htmlspecialchars($seance->getIdSalle());
+                            $idSalle = isset($seanceData['refSalle']) ? htmlspecialchars($seanceData['refSalle']) : '';
 
-                            foreach ($listeSalle as $listeSalles): ?>                                      <!--racourci pour if -->
-                                <option value="<?=$listeSalles->getIdSalle()?>"<?=$listeSalles->getIdSalle() == $salle ? 'selected' : '' ?>>
-                                    <?=$listeSalles->getNumero()?> - <?=$listeSalles->getNbplaces() ?> place(s)
+                            foreach ($listeSalle as $listeSalles): ?>
+                                <option value="<?= $listeSalles->getIdSalle() ?>" <?= ($listeSalles->getIdSalle() == $idSalle) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($listeSalles->getNumero()) ?> - <?= htmlspecialchars($listeSalles->getNbplaces()) ?> place(s)
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </label>
+
                     <br><br>
                     <input type="submit" value="Modifier">
                 </form>
