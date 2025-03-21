@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE IF NOT EXISTS `contact` (
-  `id_contact` int NOT NULL AUTO_INCREMENT,
+  `id_contact` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `objet` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `description` text(255) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id_contact`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 --
 -- Déchargement des données de la table `contact`
@@ -53,14 +53,14 @@ INSERT INTO `contact` (`id_contact`, `email`, `objet`, `description`, `date`) VA
 
 DROP TABLE IF EXISTS `film`;
 CREATE TABLE IF NOT EXISTS `film` (
-  `id_film` int NOT NULL AUTO_INCREMENT,
+  `id_film` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `description` text(255) NOT NULL,
   `genre` varchar(100) NOT NULL,
   `duree` time NOT NULL,
   `affiche` varchar(255) NOT NULL,
   PRIMARY KEY (`id_film`)
-) ;
+)ENGINE=InnoDB;
 
 --
 -- Déchargement des données de la table `film`
@@ -78,14 +78,12 @@ INSERT INTO `film` (`id_film`, `titre`, `description`, `genre`, `duree`, `affich
 
 DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE IF NOT EXISTS `reservation` (
-  `id_reservation` int NOT NULL AUTO_INCREMENT,
-  `ref_user` int NOT NULL,
-  `ref_seance` int NOT NULL,
+  `id_reservation` int(11) NOT NULL AUTO_INCREMENT,
+  `ref_user` int(11) NOT NULL,
+  `ref_seance` int(11) NOT NULL,
   `date_reservation` date NOT NULL,
-  PRIMARY KEY (`id_reservation`),
-  KEY `ref_user` (`ref_user`),
-  KEY `ref_seance` (`ref_seance`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id_reservation`)
+) ENGINE=InnoDB;
 
 --
 -- Déchargement des données de la table `reservation`
@@ -107,12 +105,11 @@ INSERT INTO `reservation` (`id_reservation`, `ref_user`, `ref_seance`, `date_res
 
 DROP TABLE IF EXISTS `salle`;
 CREATE TABLE IF NOT EXISTS `salle` (
-  `id_salle` int NOT NULL AUTO_INCREMENT,
-  `nb_places` int NOT NULL,
+  `id_salle` int(11) NOT NULL AUTO_INCREMENT,
+  `nb_places` int(11) NOT NULL,
   `numero` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_salle`),
-  UNIQUE KEY `numero` (`numero`)
-) ;
+  PRIMARY KEY (`id_salle`)
+) ENGINE=InnoDB;
 
 --
 -- Déchargement des données de la table `salle`
@@ -130,17 +127,15 @@ INSERT INTO `salle` (`id_salle`, `nb_places`, `numero`) VALUES
 
 DROP TABLE IF EXISTS `seance`;
 CREATE TABLE IF NOT EXISTS `seance` (
-  `id_seance` int NOT NULL AUTO_INCREMENT,
-  `ref_film` int NOT NULL,
-  `heure_debut` time NOT NULL,
-  `heure_fin` time NOT NULL,
-  `ref_salle` int NOT NULL,
-  `places_dispo` int NOT NULL,
+  `id_seance` int(11) NOT NULL AUTO_INCREMENT,
+  `ref_film` int(11) NOT NULL,
+  `heure_debut` time(0) NOT NULL,
+  `heure_fin` time(0) NOT NULL,
+  `ref_salle` int(11) NOT NULL,
+  `places_dispo` int(11) NOT NULL,
   `date` date NOT NULL,
-  PRIMARY KEY (`id_seance`),
-  KEY `ref_film` (`ref_film`),
-  KEY `ref_salle` (`ref_salle`)
-) ;
+  PRIMARY KEY (`id_seance`)
+)ENGINE=InnoDB ;
 
 --
 -- Déchargement des données de la table `seance`
@@ -163,9 +158,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `prenom` varchar(100) NOT NULL,
   `mdp` varchar(255) NOT NULL,
   `role` varchar(10) NOT NULL,
-  PRIMARY KEY (`id_user`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB;
 
 --
 -- Déchargement des données de la table `user`
